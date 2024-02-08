@@ -1,7 +1,6 @@
 // import User from "../models/user";
 // import bcrypt from "bcryptjs";
 // import { generateToken } from "../utils";
-
 // import { Request, Response } from "express"; 
 
 // const signup = async (req: Request, res: Response): Promise<void> => {
