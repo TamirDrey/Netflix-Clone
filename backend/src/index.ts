@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { Request, Response, NextFunction } from "express";
 import { Error } from "mongoose";
+
 import userRouter from "./routes/userRouter";
 import seedRouter from "./routes/seedRouter";
 
@@ -11,28 +11,36 @@ dotenv.config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const PORT = process.env.PORT || 8080;
-
-//routes:
-
-app.use("/api/v1/users", userRouter);
+// Routes
 app.use("/api/v1/seed", seedRouter);
+app.use("/api/v1/users", userRouter);
 
+// Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  res.status(500).send({ message: err.message });
+  console.error(err.stack); // Log the error stack to the console
+  res.status(500).send({ message: "Internal Server Error" });
 });
 
+const PORT = process.env.PORT || 8080;
+
+const mongoConnectionString = process.env.MONGO_CONNECTION_STRING;
+if (!mongoConnectionString) {
+  console.error("MongoDB connection string not found in environment variables");
+  process.exit(1); // Exit the process if MongoDB connection string is not defined
+}
+
 mongoose
-  .connect(process.env.MONGO_CONNECTION_STRING!)
+  .connect(mongoConnectionString)
   .then(() => {
-    app.listen(PORT, function () {
-      console.log("listening on port " + PORT);
+    app.listen(PORT, () => {
+      console.log("Server is running on port " + PORT);
     });
   })
   .catch((err: Error) => {
-    console.log(err.message);
+    console.error("Error connecting to MongoDB:", err.message);
   });
