@@ -23,24 +23,27 @@ app.use("/api/v1/users", userRouter);
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack); // Log the error stack to the console
-  res.status(500).send({ message: "Internal Server Error" });
+  res.status(500).send({ message: "❌ Internal Server Error" });
 });
 
 const PORT = process.env.PORT || 8080;
 
 const mongoConnectionString = process.env.MONGO_CONNECTION_STRING;
 if (!mongoConnectionString) {
-  console.error("MongoDB connection string not found in environment variables");
+  console.error(
+    "❌ MongoDB connection string not found in environment variables"
+  );
   process.exit(1); // Exit the process if MongoDB connection string is not defined
 }
 
 mongoose
   .connect(mongoConnectionString)
   .then(() => {
+    console.log("✅ MongoDB connected successfully");
     app.listen(PORT, () => {
-      console.log("Server is running on port " + PORT);
+      console.log("✅ Server is running on port " + PORT);
     });
   })
   .catch((err: Error) => {
-    console.error("Error connecting to MongoDB:", err.message);
+    console.error("❌ Error connecting to MongoDB:", err.message);
   });
