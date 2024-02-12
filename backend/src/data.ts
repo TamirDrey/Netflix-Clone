@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-export const genres = [
+export const genres: string[] = [
   "Action",
   "Comedy",
   "Fantasy",
@@ -8,7 +8,7 @@ export const genres = [
   "Animation",
 ];
 
-export const listMovieNames = [
+export const listMovieNames: string[] = [
   "Top picks for Movie",
   "Movies for your friend Steve",
   "Kid-Friendly Movies",
@@ -16,7 +16,7 @@ export const listMovieNames = [
   "Documentary Movies",
   "Classic Movies",
 ];
-export const listSeriesNames = [
+export const listSeriesNames: string[] = [
   "Top Series",
   "Crime Series",
   "Sci-Fi Series",
