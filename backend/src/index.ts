@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { Error } from "mongoose";
 import { errorHandler } from "./middleware/errorHandler";
+
 import userRouter from "./routes/userRouter";
 import seedRouter from "./routes/seedRouter";
 
