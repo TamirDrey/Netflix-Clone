@@ -14,7 +14,7 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
   const user = await newUser.save();
 
-  res.send({
+  res.status(201).send({
     token: generateToken(user),
   });
 };
