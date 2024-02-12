@@ -15,22 +15,16 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
   const user = await newUser.save();
 
   res.send({
-    _id: user._id,
-    name: user.name,
-    email: user.email,
     token: generateToken(user),
   });
 };
 
 export const signin = async (req: Request, res: Response): Promise<void> => {
-  const { password: passwordFromWebsite, email } = req.body;
+  const { password, email } = req.body;
 
   const user = await User.findOne({ email: email });
-  if (user && bcrypt.compareSync(passwordFromWebsite, user.password)) {
+  if (user && bcrypt.compareSync(password, user.password)) {
     res.send({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
       token: generateToken(user),
     });
   } else {

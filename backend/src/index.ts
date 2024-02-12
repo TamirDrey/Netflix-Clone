@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { Error } from "mongoose";
-
+import { errorHandler } from "./middleware/errorHandler";
 import userRouter from "./routes/userRouter";
 import seedRouter from "./routes/seedRouter";
 
@@ -14,17 +14,14 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false } ));
 
 // Routes
 app.use("/api/v1/seed", seedRouter);
 app.use("/api/v1/users", userRouter);
 
 // Error handling middleware
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack); // Log the error stack to the console
-  res.status(500).send({ message: "❌ Internal Server Error" });
-});
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 
