@@ -22,7 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/v1/seed", seedRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/content", contentRouter);
-app.use("/api/v1/content", contentRouter);
 
 // Error handling middleware
 app.use(errorHandler);
