@@ -5,9 +5,9 @@ import dotenv from "dotenv";
 import { Error } from "mongoose";
 import { errorHandler } from "./middleware/errorHandler";
 
-import userRouter from "./routes/userRouter";
-import seedRouter from "./routes/seedRouter";
-import contentRouter from "./routes/contentRouter";
+import userRouter from "./routes/user";
+import seedRouter from "./routes/seed";
+import contentRouter from "./routes/content";
 
 dotenv.config();
 
