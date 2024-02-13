@@ -8,15 +8,15 @@ import {
 } from "../controllers/user";
 import { isAuth } from "../utils";
 
-const usersRouter: Router = express.Router();
+const userRouter: Router = express.Router();
 
-usersRouter.post("/signin", expressAsyncHandler(signin));
-usersRouter.post("/signup", expressAsyncHandler(signup));
-usersRouter.post("/likeContent", isAuth, expressAsyncHandler(likeContent));
-usersRouter.get(
+userRouter.post("/signin", expressAsyncHandler(signin));
+userRouter.post("/signup", expressAsyncHandler(signup));
+userRouter.post("/likeContent", isAuth, expressAsyncHandler(likeContent));
+userRouter.get(
   "/getUsersLikedContents",
   isAuth,
   expressAsyncHandler(getUsersLikedContents)
 );
 
-export default usersRouter;
+export default userRouter;
