@@ -1,5 +1,6 @@
 import Content from "../models/content";
 import { Request, Response } from "express";
+import User from "../models/user";
 
 export const getAll = async (req: Request, res: Response): Promise<void> => {
   const content = await Content.find();
@@ -44,4 +45,15 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
   }
 
   res.status(200).send(content);
+};
+
+export const getUsersLikedContents = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { userId } = req.body;
+
+  const user = await User.findById(userId).populate("likedContents").exec();
+
+  res.status(200).json(user?.likedContents);
 };

@@ -52,23 +52,13 @@ export const likeContent = async (
     return;
   }
 
-  user.likedContents.push(contentId);
-  await user.save();
-
-  res.status(200).json({ user, message: "Liked" });
-};
-
-export const getUserLikedContents = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  const { userId } = req.body;
-  const user = await User.findById(userId);
-
-  if (!user) {
-    res.status(404).json({ message: "User not found" });
+  if (user.likedContents.includes(contentId)) {
+    res.status(400).json({ message: "Content already liked" });
     return;
   }
 
-  res.status(200).json(user.likedContents);
+  user.likedContents.push(contentId);
+  await user.save();
+
+  res.status(200).json({ message: "Liked" });
 };
