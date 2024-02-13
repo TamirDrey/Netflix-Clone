@@ -7,6 +7,7 @@ export interface UserDocument extends Document {
   password: string;
   createdAt: Date;
   updatedAt: Date;
+  likedContents: Schema.Types.ObjectId[];
 }
 
 // Interface representing the User model
@@ -18,6 +19,7 @@ const userSchema = new Schema<UserDocument, UserModel>(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    likedContents: [{ type: Schema.Types.ObjectId, ref: "Content" }],
   },
   {
     timestamps: true,
