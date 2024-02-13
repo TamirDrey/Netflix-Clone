@@ -6,13 +6,13 @@ import { errorsCodes } from "./constants/errorHandlerConsts";
 import { RequestWithUser } from "./types/requests-type";
 import { IUser } from "./types/user-type";
 
-const generateToken = ({ _id, name, email }: UserDocument): string => {
+export const generateToken = ({ _id, name, email }: UserDocument): string => {
   return jwt.sign({ _id, name, email }, process.env.JWT_PW as string, {
     expiresIn: "7d",
   });
 };
 
-const isAuth = asyncHandler(
+export const isAuth = asyncHandler(
   async (req: RequestWithUser, res: Response, next: NextFunction) => {
     let token;
     let authHeader = req.headers.Authorization || req.headers.authorization;
@@ -35,5 +35,3 @@ const isAuth = asyncHandler(
     }
   }
 );
-
-export { generateToken, isAuth };
