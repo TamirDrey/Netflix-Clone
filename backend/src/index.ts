@@ -7,6 +7,7 @@ import { errorHandler } from "./middleware/errorHandler";
 
 import userRouter from "./routes/userRouter";
 import seedRouter from "./routes/seedRouter";
+import contentRouter from "./routes/contentRouter";
 
 dotenv.config();
 
@@ -15,11 +16,12 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false })) ;
+app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/api/v1/seed", seedRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/content", contentRouter);
 
 // Error handling middleware
 app.use(errorHandler);
