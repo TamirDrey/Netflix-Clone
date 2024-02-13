@@ -11,5 +11,5 @@ export const mapCodeToTitle = new Map([
   [errorsCodes.UNAUTHORIZED, "Unauthorized"],
   [errorsCodes.FORBIDDEN, "Forbidden"],
   [errorsCodes.NOT_FOUND, "Not found"],
-  [errorsCodes.SERVER_ERROR, "Server Error"] ,
+  [errorsCodes.SERVER_ERROR, "Server Error"],
 ]);
