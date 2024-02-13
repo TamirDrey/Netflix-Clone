@@ -38,3 +38,37 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
     res.status(401).send({ message: "Invalid User/Password" });
   }
 };
+
+export const likeContent = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { contentId, userId } = req.body;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  user.likedContents.push(contentId);
+  await user.save();
+
+  res.status(200).json({ user, message: "Liked" });
+};
+
+export const getUserLikedContents = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { userId } = req.body;
+  const user = await User.findById(userId);
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  res.status(200).json(user.likedContents);
+};
