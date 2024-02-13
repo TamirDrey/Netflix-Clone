@@ -62,3 +62,19 @@ export const likeContent = async (
 
   res.status(200).json({ message: "Liked" });
 };
+
+export const getUsersLikedContents = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { userId } = req.body;
+
+  const user = await User.findById(userId).populate("likedContents").exec();
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  res.status(200).json(user.likedContents);
+};
