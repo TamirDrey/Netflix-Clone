@@ -16,7 +16,7 @@ export const errorHandler = (
       //stackTrace: err.stack,
     });
   else {
-    console.log("No Errors, all good !:)");
+    console.log(err.message);//TODO
     next();
   }
 };
