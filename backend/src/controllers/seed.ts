@@ -1,5 +1,5 @@
-import User from "../models/user";
-import Content from "../models/content";
+import User from "../models/user/user";
+import Content from "../models/content/content";
 import { Request, Response } from "express";
 import { data } from "../data";
 

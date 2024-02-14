@@ -1,17 +1,6 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
-
-// Interface representing the User document in MongoDB
-export interface UserDocument extends Document {
-  name: string;
-  email: string;
-  password: string;
-  createdAt: Date;
-  updatedAt: Date;
-  likedContents: Schema.Types.ObjectId[];
-}
-
-// Interface representing the User model
-interface UserModel extends Model<UserDocument> {}
+import mongoose, { Schema } from "mongoose";
+import { UserDocument } from "./UserDocument";
+import { UserModel } from "./UserModel";
 
 // Define the user schema
 const userSchema = new Schema<UserDocument, UserModel>(
