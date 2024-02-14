@@ -1,4 +1,4 @@
-import Content from "../models/content";
+import Content from "../models/content/content";
 import { Request, Response } from "express";
 
 export const getAll = async (req: Request, res: Response): Promise<void> => {

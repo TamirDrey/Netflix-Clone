@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../models/user/user";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils";
 import { Request, Response } from "express";

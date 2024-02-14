@@ -1,7 +1,7 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import { Response, NextFunction } from "express";
-import { UserDocument } from "./models/user";
+import { UserDocument } from "./models/user/UserDocument";
 import { errorsCodes } from "./constants/errorHandlerConsts";
 import { RequestWithUser } from "./types/requests-type";
 import { IUser } from "./types/user-type";
