@@ -18,9 +18,6 @@ export const listMovieNames: string[] = [
   "Classic Movies",
 ];
 
-
-
-
 export const listSeriesNames: string[] = [
   "Top Series",
   "Crime Series",
