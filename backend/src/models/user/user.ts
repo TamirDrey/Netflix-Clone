@@ -8,6 +8,7 @@ const userSchema = new Schema<UserDocument, UserModel>(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    profilePicture: { type: String, required: false },
     likedContents: [{ type: Schema.Types.ObjectId, ref: "Content" }],
   },
   {

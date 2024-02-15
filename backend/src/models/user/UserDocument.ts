@@ -6,6 +6,7 @@ export interface UserDocument extends Document {
   name: string;
   email: string;
   password: string;
+  profilePicture: String;
   createdAt: Date;
   updatedAt: Date;
   likedContents: Schema.Types.ObjectId[];

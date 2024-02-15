@@ -4,7 +4,7 @@ import { generateToken } from "../utils";
 import { Request, Response } from "express";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
-  const { name, email, password } = req.body;
+  const { name, email, password, profilePicture } = req.body;
 
   const existingUser = await User.findOne({ email });
 
@@ -16,6 +16,7 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
   const newUser = new User({
     name: name,
     email: email,
+    profilePicture: profilePicture,
     password: bcrypt.hashSync(password),
   });
 
