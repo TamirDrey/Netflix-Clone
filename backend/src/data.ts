@@ -17,6 +17,7 @@ export const listMovieNames: string[] = [
   "Documentary Movies",
   "Classic Movies",
 ];
+
 export const listSeriesNames: string[] = [
   "Top Series",
   "Crime Series",
