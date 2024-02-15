@@ -9,5 +9,5 @@ export interface UserDocument extends Document {
   profilePicture: String;
   createdAt: Date;
   updatedAt: Date;
-  likedContents: Schema.Types.ObjectId[];
+  likedContents: [{ type: Schema.Types.ObjectId; ref: "Content" }];
 }
