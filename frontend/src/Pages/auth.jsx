@@ -26,6 +26,8 @@ const auth = () => {
           password,
           profilePicture: "", // Add profile picture if needed
         });
+        console.log("Registration successful");
+        history.push("/login");
       } else {
         const response = await axios.post(
           "http://localhost:8080/api/v1/users/signin",
