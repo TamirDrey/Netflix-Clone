@@ -5,6 +5,7 @@ const auth = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //const [profilePicture, setProfilePicture] = useState(""); TODO
 
   const [variant, setVariant] = useState("login");
 
@@ -69,6 +70,12 @@ const auth = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {/* <input
+          type="img"
+          placeholder="profile Picture"
+          value={profilePicture}
+          onChange={(e) => setProfilePicture(e.target.value)}
+        /> */}
         <button type="submit">
           {variant === "login" ? "Login" : "Register"}
         </button>
