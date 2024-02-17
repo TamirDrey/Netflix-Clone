@@ -1,12 +1,10 @@
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import Auth from "./Pages/auth";
 
 function App() {
   return (
-    <>
-      <SignIn />
-      <SignUp />
-    </>
+    <div>
+      <Auth />
+    </div>
   );
 }
 
