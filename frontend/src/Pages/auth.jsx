@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 
 const auth = () => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,7 +20,7 @@ const auth = () => {
     try {
       if (variant === "register") {
         await axios.post("http://localhost:8080/api/v1/users/signup", {
-          name: username,
+          name,
           email,
           password,
           profilePicture: "", // Add profile picture if needed
@@ -49,9 +49,9 @@ const auth = () => {
         {variant === "register" && (
           <input
             type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         )}
