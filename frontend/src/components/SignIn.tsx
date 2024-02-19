@@ -59,23 +59,25 @@ const SignIn = () => {
 
   return (
     <>
-      <Input
-        value={email}
-        type="email"
-        placeholder="Email"
-        onChange={handleEmailChange}
-        label="Email"
-      />
-      {emailErrorMsg && <p>{emailErrorMsg}</p>}
-      <Input
-        value={passwordValue}
-        label="password"
-        type="password"
-        placeholder="Password"
-        onChange={handlePasswordChange}
-      />
-      {passwordErrorMsg && <p>{passwordErrorMsg}</p>}
-      <button onClick={handleSubmit}>{t("signInPage.title")}</button>
+      <form onSubmit={handleSubmit}>
+        <Input
+          value={email}
+          type="email"
+          placeholder="Email"
+          onChange={handleEmailChange}
+          label="Email"
+        />
+        {emailErrorMsg && <p>{emailErrorMsg}</p>}
+        <Input
+          value={passwordValue}
+          label="password"
+          type="password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+        />
+        {passwordErrorMsg && <p>{passwordErrorMsg}</p>}
+        <button type="submit">{t("signInPage.title")}</button>
+      </form>
     </>
   );
 };

@@ -60,30 +60,32 @@ const SignUp = () => {
 
   return (
     <>
-      {/* <Input
+      <form onSubmit={handleSubmit}>
+        {/* <Input
         value={name}
         label="password"
         type="password"
         placeholder="Password"
         onChange={}
       /> */}
-      <Input
-        value={email}
-        type="email"
-        placeholder="Email"
-        onChange={handleEmailChange}
-        label="Email"
-      />
-      {emailErrorMsg && <p>{emailErrorMsg}</p>}
-      <Input
-        value={passwordValue}
-        label="password"
-        type="password"
-        placeholder="Password"
-        onChange={handlePasswordChange}
-      />
-      {passwordErrorMsg && <p>{passwordErrorMsg}</p>}
-      <button onClick={handleSubmit}>{t("signUpPage.title")}</button>
+        <Input
+          value={email}
+          type="email"
+          placeholder="Email"
+          onChange={handleEmailChange}
+          label="Email"
+        />
+        {emailErrorMsg && <p>{emailErrorMsg}</p>}
+        <Input
+          value={passwordValue}
+          label="password"
+          type="password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+        />
+        {passwordErrorMsg && <p>{passwordErrorMsg}</p>}
+        <button type="submit">{t("signUpPage.title")}</button>
+      </form>
     </>
   );
 };

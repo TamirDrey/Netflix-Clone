@@ -1,5 +1,8 @@
 {
   "signInPage": {
     "title": "התחבר"
+  },
+  "signUpPage": {
+    "title": "הרשם"
   }
 }
