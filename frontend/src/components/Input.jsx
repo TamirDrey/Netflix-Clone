@@ -7,7 +7,7 @@ const Input = ({ id, onChange, value, label, type }) => {
         placeholder=""
         id={id}
         value={value}
-        typ={type}
+        type={type}
         onChange={onChange}
       />
       <label htmlFor={id}>{label}</label>
