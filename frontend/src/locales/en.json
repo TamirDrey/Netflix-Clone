@@ -1,5 +1,8 @@
 {
   "signInPage": {
-    "title": "Sign In now"
+    "title": "Sign In"
+  },
+  "signUpPage": {
+    "title": "Sign Up"
   }
 }

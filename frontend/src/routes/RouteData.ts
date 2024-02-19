@@ -1,6 +1,6 @@
 import { RoutePaths } from "./RoutePaths";
-import home from "../Pages/home";
-import auth from "../Pages/auth";
+import Home from "../Pages/Home";
+import Auth from "../Pages/Auth";
 
 export interface RouteItem {
   path: string;
@@ -8,9 +8,9 @@ export interface RouteItem {
 }
 
 export const PublicRoutes: RouteItem[] = [
-  { path: RoutePaths.AUTH, element: auth },
+  { path: RoutePaths.AUTH, element: Auth },
 ];
 
 export const UserRoutes: RouteItem[] = [
-  { path: RoutePaths.HOME, element: home },
+  { path: RoutePaths.HOME, element: Home },
 ];
