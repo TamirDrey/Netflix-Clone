@@ -1,9 +1,9 @@
-import Auth from "./Pages/auth";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
     <>
-      <Auth />
+      <AppRouter />
     </>
   );
 }
