@@ -1,6 +1,14 @@
 import React from "react";
 
-const Input = ({ id, onChange, value, label, type }) => {
+interface InputProps {
+  id: string;
+  onChange: any;
+  value: string;
+  label: string;
+  type: string;
+}
+
+const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
   return (
     <div>
       <input
