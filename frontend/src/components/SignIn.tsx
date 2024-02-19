@@ -14,6 +14,11 @@ const SignIn = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    if (emailErrorMsg || passwordErrorMsg) {
+      return;
+    }
+
+    console.log("log in");
     //Make the api call to log in the user
   };
 
@@ -66,6 +71,7 @@ const SignIn = () => {
           placeholder="Email"
           onChange={handleEmailChange}
           label="Email"
+          required={true}
         />
         {emailErrorMsg && <p>{emailErrorMsg}</p>}
         <Input
@@ -74,6 +80,7 @@ const SignIn = () => {
           type="password"
           placeholder="Password"
           onChange={handlePasswordChange}
+          required={true}
         />
         {passwordErrorMsg && <p>{passwordErrorMsg}</p>}
         <button type="submit">{t("signInPage.title")}</button>

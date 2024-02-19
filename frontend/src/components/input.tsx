@@ -6,6 +6,7 @@ interface InputProps {
   label: string;
   type: string;
   placeholder: string;
+  required: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({
   label,
   type,
   placeholder,
+  required,
 }) => {
   return (
     <div>
@@ -22,6 +24,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         type={type}
         onChange={onChange}
+        required={required}
       />
       <label>{label}</label>
     </div>
