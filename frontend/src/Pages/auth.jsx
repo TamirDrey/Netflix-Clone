@@ -35,7 +35,8 @@ const auth = () => {
             password,
           }
         );
-        console.log("Token:", response.data.token); // Do something with the token, like storing it in local storage
+        console.log("Token:", response.data.token);
+        localStorage.setItem("userToken", response.data.token); // Do something with the token, like storing it in local storage
       }
       // Handle success scenario or redirect user
     } catch (error) {
