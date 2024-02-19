@@ -6,6 +6,9 @@ const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
 
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+
   const [emailErrorMsg, setEmailErrorMsg] = useState("");
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
 
@@ -45,20 +48,18 @@ const SignIn = () => {
   const checkEmail = () => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (!emailPattern.test(email)) {
-      setEmailErrorMsg("Email is not valid");
-    } else {
-      setEmailErrorMsg("");
-    }
+    setEmailErrorMsg(emailPattern.test(email) ? "" : "Email is not valid");
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordValue(e.target.value);
+    setPasswordTouched(true);
     checkPassword();
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    setEmailTouched(true);
     checkEmail();
   };
 
@@ -70,19 +71,21 @@ const SignIn = () => {
           type="email"
           placeholder="Email"
           onChange={handleEmailChange}
+          onBlur={() => setEmailTouched(true)}
           label="Email"
           required={true}
         />
-        {emailErrorMsg && <p>{emailErrorMsg}</p>}
+        {emailTouched && emailErrorMsg && <p>{emailErrorMsg}</p>}
         <Input
           value={passwordValue}
           label="password"
           type="password"
           placeholder="Password"
           onChange={handlePasswordChange}
+          onBlur={() => setPasswordTouched(true)}
           required={true}
         />
-        {passwordErrorMsg && <p>{passwordErrorMsg}</p>}
+        {passwordTouched && passwordErrorMsg && <p>{passwordErrorMsg}</p>}
         <button type="submit">{t("signInPage.title")}</button>
       </form>
     </>

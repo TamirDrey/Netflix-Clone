@@ -16,8 +16,8 @@ const Auth = () => {
       {variant === "login" ? <SignIn /> : <SignUp />}
       <p>
         {variant === "login"
-          ? "first time using Netflix?"
-          : "Already have an account?"}
+          ? "first time using Netflix? "
+          : "Already have an account? "}
         <span onClick={toggleVariant}>
           {variant === "login" ? "create an account" : "login"}
         </span>
