@@ -18,7 +18,7 @@ export const authSlice = createSlice({
     },
     setUser: (state, action: PayloadAction<IUser>) => {
       state.user = action.payload;
-      //hanlde case of first login
+      //handle case of first login
       state.isAuthenticated = true;
       return state;
     },
