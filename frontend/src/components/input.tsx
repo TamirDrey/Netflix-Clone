@@ -50,13 +50,13 @@ const Input: React.FC<InputProps> = ({
         focus:outline-none
         focus:ring-0
         peer
-        invalid:border-b-1"
+        invalid:border-b-2
+        border-orange-600"
       />
       {error && (
         <div className="mt-2">
           <p className="text-xs text-orange-600 dark:text-red-400 h-0.4">
             <span className="font-medium">{error}</span>
-            <div className="h-0.5 bg-orange-600 dark:bg-red-400 mt-1"></div>
           </p>
         </div>
       )}
