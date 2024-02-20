@@ -1,34 +1,41 @@
-import React from "react";
+import React, {useState } from "react";
 
 interface InputProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  value: string;
-  label: string;
   type: string;
+  label: string;
   placeholder: string;
-  required: boolean;
+  onChange: (value: string) => void;
+  validate?: (value: string) => boolean;
 }
 
 const Input: React.FC<InputProps> = ({
-  onChange,
-  onBlur,
-  value,
-  label,
   type,
+  label,
   placeholder,
-  required,
+  onChange,
+  validate,
 }) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    onChange(value);
+
+    if (validate && !validate(value)) {
+      setError(`Invalid ${label}`);
+    } else {
+      setError(null);
+    }
+  };
+
   return (
     <div>
       <input
-        placeholder={placeholder}
-        value={value}
         type={type}
-        onChange={onChange}
-        required={required}
-        onBlur={onBlur}
+        placeholder={placeholder}
+        onChange={handleInputChange}
       />
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <label>{label}</label>
     </div>
   );

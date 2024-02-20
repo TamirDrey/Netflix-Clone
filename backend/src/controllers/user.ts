@@ -22,9 +22,7 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
   const user = await newUser.save();
 
-  res.status(201).send({
-    token: generateToken(user),
-  });
+  res.status(201).send({ message: "successfully registered" });
 };
 
 export const signin = async (req: Request, res: Response): Promise<void> => {

@@ -33,7 +33,7 @@ export const data = {
     {
       name: "Admin",
       email: "admin@example.com",
-      password: bcrypt.hashSync("12345"),
+      password: bcrypt.hashSync("omEr@1234"),
       //isAdmin: true,
       profilePicture: "https://i.pravatar.cc/300",
       likedContents: [],
