@@ -3,7 +3,6 @@ import React, { useState } from "react";
 interface InputProps {
   type: string;
   label: string;
-
   onChange: (value: string) => void;
   validate?: (value: string) => boolean;
   required?: boolean;
@@ -12,7 +11,6 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
   type,
   label,
-
   onChange,
   validate,
   required,
