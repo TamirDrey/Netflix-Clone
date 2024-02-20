@@ -1,11 +1,13 @@
 import React, {useState } from "react";
 
+
 interface InputProps {
   type: string;
   label: string;
   placeholder: string;
   onChange: (value: string) => void;
   validate?: (value: string) => boolean;
+  required?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -14,6 +16,7 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   onChange,
   validate,
+  required
 }) => {
   const [error, setError] = useState<string | null>(null);
 
@@ -34,6 +37,7 @@ const Input: React.FC<InputProps> = ({
         type={type}
         placeholder={placeholder}
         onChange={handleInputChange}
+        required={required}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
       <label>{label}</label>

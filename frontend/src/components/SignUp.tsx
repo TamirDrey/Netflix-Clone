@@ -56,6 +56,7 @@ const SignUp = () => {
           placeholder="Name"
           onChange={(value) => setNameValue(value)}
           validate={checkName}
+          required={true}        
         />
         <Input
           type="email"
@@ -63,6 +64,7 @@ const SignUp = () => {
           placeholder="Email"
           onChange={(value) => setEmailValue(value)}
           validate={checkEmail}
+          required={true}
         />
         <Input
           label="password"
@@ -70,6 +72,7 @@ const SignUp = () => {
           placeholder="Password"
           onChange={(value) => setPasswordValue(value)}
           validate={checkPassword}
+          required={true}
         />
         <button type="submit">{t("signUpPage.title")}</button>
       </form>

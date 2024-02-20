@@ -4,6 +4,7 @@ import Input from "./Input";
 import { useLoginMutation } from "../store/services/auth-api";
 import { useNavigate } from "react-router-dom";
 
+
 const SignIn = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
@@ -46,23 +47,29 @@ const SignIn = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Input
-          type="email"
-          label="Email"
-          placeholder="Email"
-          onChange={(value) => setEmailValue(value)}
-          validate={validateEmail}
-        />
-        <Input
-          label="password"
-          type="password"
-          placeholder="Password"
-          onChange={(value) => setPasswordValue(value)}
-          validate={validatePassword}
-        />
-        <button type="submit">{t("signInPage.title")}</button>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <Input
+              type="email"
+              label="Email"
+              placeholder="Email"
+              onChange={(value) => setEmailValue(value)}
+              validate={validateEmail}
+              required={true}
+            />
+            <Input
+              label="password"
+              type="password"
+              placeholder="Password"
+              onChange={(value) => setPasswordValue(value)}
+              validate={validatePassword}
+              required={true}
+            />
+            <button type="submit">{t("signInPage.title")}</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };
