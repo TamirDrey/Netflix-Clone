@@ -6,11 +6,11 @@ const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
 
-  const [emailTouched, setEmailTouched] = useState(false);
-  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [emailTouched, setEmailTouched] = useState<boolean>(false);
+  const [passwordTouched, setPasswordTouched] = useState<boolean>(false);
 
-  const [emailErrorMsg, setEmailErrorMsg] = useState("");
-  const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [emailErrorMsg, setEmailErrorMsg] = useState<string>("");
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState<string>("");
 
   const { t } = useTranslation();
 
