@@ -4,7 +4,6 @@ import Input from "./Input";
 import { useLoginMutation } from "../store/services/auth-api";
 import { useNavigate } from "react-router-dom";
 
-
 const SignIn = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
@@ -49,11 +48,11 @@ const SignIn = () => {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div  className="flex flex-col gap-4">
             <Input
               type="email"
               label="Email"
-              placeholder="Email"
+
               onChange={(value) => setEmailValue(value)}
               validate={validateEmail}
               required={true}
@@ -61,12 +60,17 @@ const SignIn = () => {
             <Input
               label="password"
               type="password"
-              placeholder="Password"
+
               onChange={(value) => setPasswordValue(value)}
               validate={validatePassword}
               required={true}
             />
-            <button type="submit">{t("signInPage.title")}</button>
+            <button
+              type="submit"
+              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+            >
+              {t("signInPage.title")}
+            </button>
           </div>
         </form>
       </div>
