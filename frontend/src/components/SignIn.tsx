@@ -48,11 +48,10 @@ const SignIn = () => {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <div  className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <Input
               type="email"
               label="Email"
-
               onChange={(value) => setEmailValue(value)}
               validate={validateEmail}
               required={true}
@@ -60,7 +59,6 @@ const SignIn = () => {
             <Input
               label="password"
               type="password"
-
               onChange={(value) => setPasswordValue(value)}
               validate={validatePassword}
               required={true}
