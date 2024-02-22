@@ -23,8 +23,9 @@ export const isAuth = asyncHandler(
           res.status(errorsCodes.UNAUTHORIZED).send({ message: err.message });
         else {
           const user: IUser = {
-            email: (decode as JwtPayload).email,
-            password: (decode as JwtPayload).sub,
+            _id: (decode as JwtPayload)._id,
+            name: (decode as JwtPayload).name,
+            email: (decode as JwtPayload).email
           };
           req.user = user;
           next();

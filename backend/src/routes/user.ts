@@ -5,6 +5,7 @@ import {
   signin,
   likeContent,
   getUsersLikedContents,
+  //getUser
 } from "../controllers/user";
 import { isAuth } from "../utils";
 
@@ -18,5 +19,6 @@ userRouter.get(
   isAuth,
   asyncHandler(getUsersLikedContents)
 );
+//userRouter.get("/auth-me", isAuth, getUser);
 
 export default userRouter;

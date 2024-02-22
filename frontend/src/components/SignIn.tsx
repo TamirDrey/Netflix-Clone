@@ -22,7 +22,6 @@ const SignIn = () => {
       password: passwordValue,
     });
     navigate("/home");
-    console.log("log in");
   };
   const validateEmail = (email: string): boolean => {
     // Regular expression for email validation

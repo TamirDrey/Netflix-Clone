@@ -2,6 +2,8 @@ import User from "../models/user/user";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils";
 import { Request, Response } from "express";
+import { RequestWithUser } from "../types/requests-type";
+import { IUser } from "../types/user-type";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
@@ -30,13 +32,26 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
 
   const user = await User.findOne({ email });
   if (user && bcrypt.compareSync(password, user.password)) {
+
+    const userToSend: IUser = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+
+
     res.send({
+      user: userToSend,
       token: generateToken(user),
     });
   } else {
     res.status(401).send({ message: "Invalid User/Password" });
   }
 };
+
+// export const getUser = async (req: RequestWithUser, res: Response){
+
+// }
 
 export const likeContent = async (
   req: Request,

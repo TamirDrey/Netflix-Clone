@@ -26,7 +26,7 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data));
+          dispatch(setUser(data.user));
         } catch (error) {
           console.log(error);
           localStorage.removeItem("accessToken");
@@ -74,7 +74,7 @@ export const authApi = createApi({
 });
 
 export const {
-  useLoginMutation,
   useAuthMeQuery,
+  useLoginMutation,
   useSignupMutation
 } = authApi;
