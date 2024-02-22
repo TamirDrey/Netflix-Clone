@@ -34,6 +34,7 @@ const Input: React.FC<InputProps> = ({
         type={type}
         onChange={handleInputChange}
         required={required}
+        placeholder=""
         className="
         block
         rounded-md
