@@ -7,7 +7,6 @@ export interface IUser{
 export interface AuthState{
     user: IUser | null,
     isAuthenticated:boolean;
-    expired?:boolean;
 }
 
 export interface LoginPayload{

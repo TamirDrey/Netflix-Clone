@@ -8,7 +8,7 @@ const initialState: AuthState = {
 };
 
 export const authSlice = createSlice({
-  name: "kaka",
+  name: "auth",
   initialState,
   reducers: {
     logout: (state) => {
