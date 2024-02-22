@@ -9,7 +9,8 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
     res.status(404).json({ message: "No content found" });
     return;
   }
-  const contentToSend: IContent[] = content.map((item) => ({
+  const contentToSend: IContent[] = 
+  content.map((item) => ({
     _id: item._id,
     title: item.title,
     description: item.description,
@@ -26,7 +27,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
     isSeries: item.isSeries,
   }));
 
-  res.status(200).send({contentList : contentToSend});
+  res.status(200).send(contentToSend);
 };
 
 export const getSeries = async (req: Request, res: Response): Promise<void> => {
