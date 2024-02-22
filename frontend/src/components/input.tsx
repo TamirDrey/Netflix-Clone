@@ -3,7 +3,6 @@ import React, { useState } from "react";
 interface InputProps {
   type: string;
   label: string;
-
   onChange: (value: string) => void;
   validate?: (value: string) => boolean;
   required?: boolean;
@@ -12,7 +11,6 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
   type,
   label,
-
   onChange,
   validate,
   required,
@@ -36,6 +34,7 @@ const Input: React.FC<InputProps> = ({
         type={type}
         onChange={handleInputChange}
         required={required}
+        placeholder=""
         className="
         block
         rounded-md
@@ -72,8 +71,8 @@ const Input: React.FC<InputProps> = ({
       top-4 
       z-10 
       origin-[0] 
-      left-6
-      peer-placeholder-shown:scale-100 
+      left-3
+      peer-placeholder-shown:scale-100
       peer-placeholder-shown:translate-y-0 
       peer-focus:scale-75
       peer-focus:-translate-y-3"
