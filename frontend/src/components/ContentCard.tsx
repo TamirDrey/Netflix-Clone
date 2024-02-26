@@ -5,6 +5,7 @@ import LikeButton from "./LikeButton";
 
 const ContentCard: React.FC<IContent> = (data) => {
   return (
+    
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
         src={data.imgThumb}
