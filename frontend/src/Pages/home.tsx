@@ -1,9 +1,34 @@
-import { useAppSelector } from "../store/hooks";
+import ContentCard from "../components/ContentCard";
+import ContentList from "../components/ContentList";
+import { useGetALLQuery } from "../store/services/content-api";
+import { IContent } from "../types/content-types";
 
 const Home = () => {
-  const user = useAppSelector(state => state.auth.user)
-  console.log(user)
-  return <div>home</div>;
+  const { data, error, isLoading } = useGetALLQuery(null);
+
+  if (isLoading) {
+    console.log("loading...");
+  } else if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+
+  return (
+    <div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error</div>
+      ) : (
+        data && (
+          <>
+            <ContentList data= {data}/>
+          </>
+        )
+      )}
+    </div>
+  );
 };
 
 export default Home;

@@ -1,5 +1,6 @@
 import Content from "../models/content/content";
 import { Request, Response } from "express";
+import { IContent } from "../types/content-type";
 
 export const getAll = async (req: Request, res: Response): Promise<void> => {
   const content = await Content.find();
@@ -8,8 +9,25 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
     res.status(404).json({ message: "No content found" });
     return;
   }
+  const contentToSend: IContent[] = 
+  content.map((item) => ({
+    _id: item._id,
+    title: item.title,
+    description: item.description,
+    img: item.img,
+    imgTitle: item.imgTitle,
+    imgThumb: item.imgThumb,
+    imgVertical: item.imgVertical,
+    trailer: item.trailer,
+    movie: item.movie,
+    duration: item.duration,
+    year: item.year,
+    limit: item.limit,
+    genre: item.genre,
+    isSeries: item.isSeries,
+  }));
 
-  res.status(200).send(content);
+  res.status(200).send(contentToSend);
 };
 
 export const getSeries = async (req: Request, res: Response): Promise<void> => {
