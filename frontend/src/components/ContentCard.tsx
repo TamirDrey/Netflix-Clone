@@ -1,11 +1,13 @@
 import { IContent } from "../types/content-types";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { PlayIcon } from "@heroicons/react/24/solid";
+import LikeButton from "./LikeButton";
 
 const ContentCard: React.FC<IContent> = (data) => {
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
-      <h1 className="text-white">{data.title}</h1>
       <img
-        src={data.img}
+        src={data.imgThumb}
         alt=""
         className="
         cursor-pointer
@@ -68,9 +70,19 @@ const ContentCard: React.FC<IContent> = (data) => {
           "
         >
           <div className="flex flex-row items-center gap-3">
-            <div className="flex flex-row items-center gap-2 mt-4 text-[8px] text-white lg:text-sm">
-              <p>{data.genre}</p>
+            <div className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300">
+              <PlayIcon className="text-black w-4 lg:w-6" />
             </div>
+            <LikeButton contentId={data._id} /> 
+            <div className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300">
+              <ChevronDownIcon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" />
+            </div>
+          </div>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
+          </div>
+          <div className="flex flex-row items-center gap-2 mt-4 text-[8px] text-white lg:text-sm">
+            <p>{data.genre}</p>
           </div>
         </div>
       </div>

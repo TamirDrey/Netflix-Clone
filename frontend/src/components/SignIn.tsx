@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Input from "./Input";
-import { useLoginMutation } from "../store/services/auth-api";
+import { useSigninMutation } from "../store/services/auth-api";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
@@ -10,7 +10,7 @@ const SignIn = () => {
 
   const navigate = useNavigate();
 
-  const [singin] = useLoginMutation();
+  const [singin] = useSigninMutation();
 
   const { t } = useTranslation();
 

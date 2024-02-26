@@ -32,13 +32,12 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
 
   const user = await User.findOne({ email });
   if (user && bcrypt.compareSync(password, user.password)) {
-
+    
     const userToSend: IUser = {
       _id: user._id,
       name: user.name,
       email: user.email,
     };
-
 
     res.send({
       user: userToSend,
@@ -78,17 +77,18 @@ export const likeContent = async (
 };
 
 export const getUsersLikedContents = async (
-  req: Request,
+  req: RequestWithUser,
   res: Response
 ): Promise<void> => {
-  const { userId } = req.body;
+  
+  const userId = req.user?._id;
 
   const user = await User.findById(userId).populate("likedContents").exec();
-
   if (!user) {
     res.status(404).json({ message: "User not found" });
     return;
   }
+
 
   res.status(200).json(user.likedContents);
 };

@@ -1,5 +1,6 @@
 import ContentCard from "../components/ContentCard";
 import ContentList from "../components/ContentList";
+import NavBar from "../components/NavBar";
 import { useGetALLQuery } from "../store/services/content-api";
 import { IContent } from "../types/content-types";
 
@@ -15,7 +16,8 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>
+      <NavBar />
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
@@ -23,11 +25,13 @@ const Home = () => {
       ) : (
         data && (
           <>
-            <ContentList data= {data}/>
+            <div  className="pb-40">
+              <ContentList data={data} title={"kaka"} />
+            </div>
           </>
         )
       )}
-    </div>
+    </>
   );
 };
 
