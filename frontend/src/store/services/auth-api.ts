@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../reducers/authReducer";
 
-
 // Replace this with your actual API endpoint
 const BASE_URL = "http://localhost:8080/api/v1/users";
 
@@ -43,7 +42,7 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data); //TODO: REMOVE IN PRODUCTION 
+          console.log(data); //TODO: REMOVE IN PRODUCTION
           if (data.token) {
             localStorage.setItem("accessToken", data.token);
             dispatch(setUser(data.user));
@@ -55,26 +54,21 @@ export const authApi = createApi({
     }),
 
     signup: builder.mutation({
-        query: (payload) => ({
-          url: "/signup",
-          method: "POST",
-          body: payload,
-        }),
-        async onQueryStarted(args, {dispatch, queryFulfilled }) {
-          try {
-            const { data } = await queryFulfilled;
-            console.log(data); //TODO: REMOVE IN PRODUCTION 
-          } catch (error) {
-            console.log(error);
-          }
-        },
+      query: (payload) => ({
+        url: "/signup",
+        method: "POST",
+        body: payload,
       }),
-
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log(data); //TODO: REMOVE IN PRODUCTION
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
   }),
 });
 
-export const {
-  useAuthMeQuery,
-  useLoginMutation,
-  useSignupMutation
-} = authApi;
+export const { useAuthMeQuery, useLoginMutation, useSignupMutation } = authApi;
