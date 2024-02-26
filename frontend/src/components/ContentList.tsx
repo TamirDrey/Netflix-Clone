@@ -8,6 +8,10 @@ interface ContentListProps {
 }
 
 const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
+<<<<<<< HEAD
+=======
+  console.log(data);
+>>>>>>> 2a0533683cc5a769fe927ad0b05215e067a95be4
 
   return (
     <div className="px-4 md:px-12 mt-4 space-y-8">
@@ -17,6 +21,7 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
         </p>
         <div className="grid grid-cols-4 gap-2">
           {data.map((item) => (
+<<<<<<< HEAD
             <ContentCard
               key={item._id}
               genre={item.genre}
@@ -24,6 +29,9 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
               duration={item.duration}
               _id = {item._id}
             />
+=======
+            <ContentCard key={item._id} />
+>>>>>>> 2a0533683cc5a769fe927ad0b05215e067a95be4
           ))}
         </div>
       </div>
