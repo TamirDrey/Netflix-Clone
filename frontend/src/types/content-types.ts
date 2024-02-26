@@ -13,5 +13,7 @@ export interface IContent {
     limit?: string;
     genre?: string;
     isSeries?: boolean;
+
+    
   }
   
