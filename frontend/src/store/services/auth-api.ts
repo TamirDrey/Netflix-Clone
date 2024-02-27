@@ -1,11 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../reducers/authReducer";
-<<<<<<< HEAD
 import { IContent } from "../../types/content-types";
-=======
->>>>>>> 2a0533683cc5a769fe927ad0b05215e067a95be4
 
-// Replace this with your actual API endpoint
 const BASE_URL = "http://localhost:8080/api/v1/users";
 
 export const authApi = createApi({
@@ -57,7 +53,6 @@ export const authApi = createApi({
         }
       },
     }),
-<<<<<<< HEAD
 
     likeContent: builder.mutation({
       query: (payload) => ({
@@ -85,11 +80,9 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLikeContentMutation, useSigninMutation, useSignupMutation, useGetLikedContentQuery } =
-  authApi;
-=======
-  }),
-});
-
-export const { useAuthMeQuery, useLoginMutation, useSignupMutation } = authApi;
->>>>>>> 2a0533683cc5a769fe927ad0b05215e067a95be4
+export const {
+  useLikeContentMutation,
+  useSigninMutation,
+  useSignupMutation,
+  useGetLikedContentQuery,
+} = authApi;

@@ -10,12 +10,14 @@ import { useCallback } from "react";
 interface LikeButtonProps {
   contentId?: string;
 }
+const isFavorite:boolean = false;
 
 const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
   const user = useAppSelector(selectUser);
 
   const [LikeContent] = useLikeContentMutation();
   const { data, error, isLoading } = useGetLikedContentQuery(null);
+  
 
   const toggleFavorites = async () => {
 
