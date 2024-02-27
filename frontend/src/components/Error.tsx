@@ -1,8 +1,4 @@
-
-
 const Error = () => {
-  return (
-    <div>OMER THE ZION </div>
-  )
-}
-export default Error
+  return <div>ERROR</div>;
+};
+export default Error;
