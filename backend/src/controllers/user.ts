@@ -4,7 +4,6 @@ import { generateToken } from "../utils";
 import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
-import { log } from "console";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
@@ -47,10 +46,6 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
     res.status(401).send({ message: "Invalid User/Password" });
   }
 };
-
-// export const getUser = async (req: RequestWithUser, res: Response){
-
-// }
 
 export const likeContent = async (
   req: RequestWithUser,

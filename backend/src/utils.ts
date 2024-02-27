@@ -25,7 +25,7 @@ export const isAuth = asyncHandler(
           const user: IUser = {
             _id: (decode as JwtPayload)._id,
             name: (decode as JwtPayload).name,
-            email: (decode as JwtPayload).email
+            email: (decode as JwtPayload).email,
           };
           req.user = user;
           next();
