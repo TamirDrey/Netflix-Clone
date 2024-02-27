@@ -1,8 +1,6 @@
-import ContentCard from "../components/ContentCard";
 import ContentList from "../components/ContentList";
 import NavBar from "../components/NavBar";
 import { useGetALLQuery } from "../store/services/content-api";
-import { IContent } from "../types/content-types";
 
 const Home = () => {
   const { data, error, isLoading } = useGetALLQuery(null);
