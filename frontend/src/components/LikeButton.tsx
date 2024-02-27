@@ -5,37 +5,60 @@ import {
   useGetLikedContentQuery,
   useLikeContentMutation,
 } from "../store/services/auth-api";
-import { useCallback } from "react";
+import { useEffect, useState } from "react";
 
 interface LikeButtonProps {
   contentId?: string;
 }
-const isFavorite:boolean = false;
 
 const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
   const user = useAppSelector(selectUser);
-
+  const [isFavorite, setIsFavorite] = useState(false);
   const [LikeContent] = useLikeContentMutation();
   const { data, error, isLoading } = useGetLikedContentQuery(null);
-  
+
+  // useEffect(() => {
+  //   checkLikeInList();
+  // }, [data, isLoading, error]);
 
   const toggleFavorites = async () => {
-
-    
-
     await LikeContent({
       contentId: contentId,
-      userId: user?._id,
-    });
+    })
+      .unwrap()
+      .then((payload) => {
+        console.log(data);
+        if (payload.message == "Liked") {
+          checkLikeInList();
+        }
+      });
   };
 
-  //   const Icon = isFavorite ? CheckIcon : PlusIcon;
+  const checkLikeInList = () => {
+    if (isLoading) {
+      console.log("Loading");
+      setIsFavorite(false);
+    } else if (data?.includes(contentId!)) {
+      setIsFavorite(true);
+    } else {
+      console.log(error);
+    }
+  };
+
+  // const Icon = isFavorite ? CheckIcon : PlusIcon;
+
   return (
     <div>
       <div
         onClick={toggleFavorites}
         className="cursor-pointer group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300"
       >
+        {isFavorite ? (
+          <CheckIcon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" />
+        ) : (
+          <PlusIcon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" />
+        )}
+
         {/* <Icon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" /> */}
       </div>
     </div>

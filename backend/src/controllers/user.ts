@@ -4,6 +4,7 @@ import { generateToken } from "../utils";
 import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
+import { log } from "console";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
@@ -53,25 +54,26 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
 // }
 
 export const likeContent = async (
-  req: Request,
+  req: RequestWithUser,
   res: Response
 ): Promise<void> => {
-  const { contentId, userId } = req.body;
+  const { contentId } = req.body;
+  const user = req.user
 
-  const user = await User.findById(userId);
+  const userDB = await User.findById(user?._id);
 
-  if (!user) {
+  if (!userDB) {
     res.status(404).json({ message: "User not found" });
     return;
   }
 
-  if (user.likedContents.includes(contentId)) {
+  if (userDB.likedContents.includes(contentId)) {
     res.status(400).json({ message: "Content already liked" });
     return;
   }
 
-  user.likedContents.push(contentId);
-  await user.save();
+  userDB.likedContents.push(contentId);
+  await userDB.save();
 
   res.status(200).json({ message: "Liked" });
 };
@@ -81,14 +83,14 @@ export const getUsersLikedContents = async (
   res: Response
 ): Promise<void> => {
   
-  const userId = req.user?._id;
+  console.log("OMER IGNA")
+  const user = req.user
 
-  const user = await User.findById(userId).populate("likedContents").exec();
-  if (!user) {
+  const userDB = await User.findById(user?._id)
+
+  if (!userDB) {
     res.status(404).json({ message: "User not found" });
     return;
-  }
-
-
-  res.status(200).json(user.likedContents);
+  }  
+  res.status(200).json(userDB.likedContents);
 };

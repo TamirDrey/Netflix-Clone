@@ -66,12 +66,12 @@ export const authApi = createApi({
           console.log(data.message);
         } catch (error) {
           console.log(error);
-          localStorage.removeItem("accessToken");
+          //TODO: display error to the user
         }
       },
     }),
 
-    getLikedContent: builder.query<IContent[], null>({
+    getLikedContent: builder.query<string[], null>({
       query: () => ({
         url: "/getUsersLikedContents",
         method: "GET",
