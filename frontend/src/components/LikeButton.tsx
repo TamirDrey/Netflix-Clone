@@ -5,7 +5,7 @@ import {
   useGetLikedContentQuery,
   useLikeContentMutation,
 } from "../store/services/auth-api";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 
 interface LikeButtonProps {
   contentId?: string;
@@ -15,17 +15,17 @@ const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
   //const user = useAppSelector(selectUser);
   const [isFavorite, setIsFavorite] = useState(false);
   const [LikeContent] = useLikeContentMutation();
-  //const { data, error, isLoading } = useGetLikedContentQuery(null);
-
+ 
   const toggleFavorites = async () => {
     await LikeContent({
       contentId: contentId,
     })
       .unwrap()
       .then((payload) => {
-        console.log(payload);
-        if (payload == contentId) {
+        if (payload == contentId ) {
           setIsFavorite(true);
+        } else if (payload.message == "Content unliked") {
+          setIsFavorite(false);
         } else {
           setIsFavorite(false);
         }

@@ -1,9 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 interface NavbarItemProps {
   label: string;
+  route?: string;
   active?: boolean;
 }
 
-const NavBarItem: React.FC<NavbarItemProps> = ({ label, active }) => {
+const NavBarItem: React.FC<NavbarItemProps> = ({ label, active, route }) => {
+  const navigate = useNavigate();
+  const moveToRoute = () => {
+    if (route) {
+      navigate(route);
+    }
+  };
+
   return (
     <div
       className={
@@ -11,6 +21,7 @@ const NavBarItem: React.FC<NavbarItemProps> = ({ label, active }) => {
           ? "text-white cursor-default"
           : "text-gray-200 hover:text-gray-300 cursor-pointer transition"
       }
+      onClick={moveToRoute}
     >
       {label}
     </div>
