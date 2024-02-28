@@ -1,6 +1,6 @@
 import AppRouter from "./routes/AppRouter";
 import "./App.css";
-import { useAuthMeQuery } from "./store/services/auth-api";
+
 
 function App() {
   // const token = localStorage.getItem("accessToken");

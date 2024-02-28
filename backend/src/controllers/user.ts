@@ -4,7 +4,6 @@ import { generateToken } from "../utils";
 import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
-import { log } from "console";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
@@ -33,7 +32,6 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
 
   const user = await User.findOne({ email });
   if (user && bcrypt.compareSync(password, user.password)) {
-    
     const userToSend: IUser = {
       _id: user._id,
       name: user.name,
@@ -49,16 +47,12 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// export const getUser = async (req: RequestWithUser, res: Response){
-
-// }
-
 export const likeContent = async (
   req: RequestWithUser,
   res: Response
 ): Promise<void> => {
   const { contentId } = req.body;
-  const user = req.user
+  const user = req.user;
 
   const userDB = await User.findById(user?._id);
 
@@ -82,15 +76,13 @@ export const getUsersLikedContents = async (
   req: RequestWithUser,
   res: Response
 ): Promise<void> => {
-  
-  console.log("OMER IGNA")
-  const user = req.user
+  const user = req.user;
 
-  const userDB = await User.findById(user?._id)
+  const userDB = await User.findById(user?._id);
 
   if (!userDB) {
     res.status(404).json({ message: "User not found" });
     return;
-  }  
+  }
   res.status(200).json(userDB.likedContents);
 };
