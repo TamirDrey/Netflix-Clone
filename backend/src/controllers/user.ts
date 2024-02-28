@@ -50,7 +50,7 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
 
 //@desc get current user
 //@route GET /api/users/auth-me
-//@acsses private
+//@access private
 export const getUser = async (
   req: RequestWithUser,
   res: Response

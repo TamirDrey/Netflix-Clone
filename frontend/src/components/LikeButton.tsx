@@ -1,11 +1,6 @@
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
-import { useAppSelector } from "../store/hooks";
-import { selectUser } from "../store/reducers/authReducer";
-import {
-  useGetLikedContentQuery,
-  useLikeContentMutation,
-} from "../store/services/auth-api";
-import { useEffect, useMemo, useState } from "react";
+import { useLikeContentMutation } from "../store/services/auth-api";
+import { useState } from "react";
 
 interface LikeButtonProps {
   contentId?: string;
