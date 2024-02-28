@@ -85,7 +85,7 @@ export const likeContent = async (
   userDB.likedContents.push(contentId);
   await userDB.save();
 
-  res.status(200).json({ message: "Liked" });
+  res.status(200).json(contentId);
 };
 
 export const getUsersLikedContents = async (

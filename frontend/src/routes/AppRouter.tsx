@@ -23,7 +23,7 @@ const AppRouter = () => {
                   element={<route.element />}
                 />
               ))}
-              <Route path="/*" element={<SignIn />} />
+              <Route path="/*"  element={<SignIn />} />
             </>
           )}
           {isAuthenticated && (

@@ -12,20 +12,10 @@ interface LikeButtonProps {
 }
 
 const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
-  const user = useAppSelector(selectUser);
+  //const user = useAppSelector(selectUser);
   const [isFavorite, setIsFavorite] = useState(false);
   const [LikeContent] = useLikeContentMutation();
-  const { data, error, isLoading } = useGetLikedContentQuery(null);
-
-  // const isFavorite = useMemo(() => {
-  //   const list = user?.likedContent || [];
-
-  //   return list.includes(contentId)
-  // }, [user, contentId]);
-
-  useEffect(() => {
-    checkLikeInList();
-  }, [data, isLoading, error]);
+  //const { data, error, isLoading } = useGetLikedContentQuery(null);
 
   const toggleFavorites = async () => {
     await LikeContent({
@@ -33,23 +23,13 @@ const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
     })
       .unwrap()
       .then((payload) => {
-        console.log(data);
-        if (payload.message == "Liked") {
-          
-          checkLikeInList();
+        console.log(payload);
+        if (payload == contentId) {
+          setIsFavorite(true);
+        } else {
+          setIsFavorite(false);
         }
       });
-  };
-
-  const checkLikeInList = () => {
-    if (isLoading) {
-      console.log("Loading");
-      setIsFavorite(false);
-    } else if (data?.includes(contentId!)) {
-      setIsFavorite(true);
-    } else {
-      console.log(error);
-    }
   };
 
   const Icon = isFavorite ? CheckIcon : PlusIcon;
