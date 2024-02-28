@@ -6,7 +6,6 @@ import { useGetLikedContentQuery } from "../store/services/auth-api";
 
 const MyList = () => {
   const { data, error, isLoading } = useGetLikedContentQuery(null);
-  
 
   return (
     <>
