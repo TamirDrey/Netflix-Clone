@@ -16,12 +16,14 @@ const SignUp = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     await signup({
       name: nameValue,
       email: emailValue,
       password: passwordValue,
+    }).then(() => {
+      navigate("/signin");
     });
-    navigate("/signin");
   };
 
   const checkPassword = (password: string) => {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   BellIcon,
   MagnifyingGlassIcon,
@@ -6,16 +6,17 @@ import {
 } from "@heroicons/react/24/outline";
 import MobileMenu from "./MobileMenu";
 import NavBarItem from "./NavBarItem";
+import AccountMenu from "./AccountMenu";
 
 const TOP_OFFSET = 66;
 
 const NavBar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
       if (window.scrollY >= TOP_OFFSET) {
         setShowBackground(true);
       } else {
@@ -30,6 +31,10 @@ const NavBar = () => {
     };
   }, []);
 
+  const toggleAccountMenu = useCallback(() => {
+    setShowAccountMenu((current) => !current);
+  }, []);
+
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((current) => !current);
   }, []);
@@ -41,7 +46,7 @@ const NavBar = () => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        <img src="/public/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
+        <img src="/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavBarItem label="Home" active />
           <NavBarItem label="Series" />
@@ -69,13 +74,20 @@ const NavBar = () => {
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BellIcon className="w-6" />
           </div>
-          {/* <div onClick={toggleAccountMenu} className="flex flex-row items-center gap-2 cursor-pointer relative">
-          <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-            <img src="/images/default-blue.png" alt="" />
+          <div
+            onClick={toggleAccountMenu}
+            className="flex flex-row items-center gap-2 cursor-pointer relative"
+          >
+            <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+              <img src="/images/default-blue.png" alt="" />
+            </div>
+            <ChevronDownIcon
+              className={`w-4 text-white fill-white transition ${
+                showAccountMenu ? "rotate-180" : "rotate-0"
+              }`}
+            />
+            <AccountMenu visible={showAccountMenu} />
           </div>
-          <ChevronDownIcon className={`w-4 text-white fill-white transition ${showAccountMenu ? 'rotate-180' : 'rotate-0'}`} />
-          <AccountMenu visible={showAccountMenu} />
-        </div> */}
         </div>
       </div>
     </nav>

@@ -8,7 +8,6 @@ interface ContentListProps {
 }
 
 const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
-  console.log(data);
 
   return (
     <div className="px-4 md:px-12 mt-4 space-y-8">
