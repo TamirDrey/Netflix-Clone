@@ -32,11 +32,13 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
   const { password, email } = req.body;
 
   const user = await User.findOne({ email });
+
   if (user && bcrypt.compareSync(password, user.password)) {
     const userToSend: IUser = {
       _id: user._id,
       name: user.name,
       email: user.email,
+      likedContent: user.likedContents,
     };
 
     res.send({
@@ -56,10 +58,20 @@ export const getUser = async (
   res: Response
 ): Promise<void> => {
   const token = req.headers.authorization;
+  const email = req.user?.email;
+
   if (!token) {
     res.status(401).send({ message: "Not authorized, no token" });
-  } else {
-    res.status(200).send(req.user);
+  }
+  const user = await User.findOne({ email });
+  if (user) {
+    const userToSend: IUser = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      likedContent: user.likedContents,
+    };
+    res.status(200).send({ user: userToSend });
   }
 };
 
@@ -82,6 +94,7 @@ export const likeContent = async (
     // Content already liked, remove it from the list
     userDB.likedContents.splice(likedIndex, 1);
     await userDB.save();
+    user?.likedContent?.splice(likedIndex, 1);
     res.status(200).json({ message: "Content unliked" });
     return;
   }
@@ -89,6 +102,7 @@ export const likeContent = async (
   // If not liked already, like the content
   userDB.likedContents.push(contentId);
   await userDB.save();
+  user?.likedContent?.push(contentId);
 
   res.status(200).json(contentId);
 };
@@ -99,13 +113,13 @@ export const getUsersLikedContents = async (
 ): Promise<void> => {
   const user = req.user;
 
-  const userDB = await User.findById(user?._id).populate("likedContents").exec();
+  const userDB = await User.findById(user?._id)
+    .populate("likedContents")
+    .exec();
 
   if (!userDB) {
     res.status(404).json({ message: "User not found" });
     return;
   }
-
-  
   res.status(200).json(userDB.likedContents);
 };

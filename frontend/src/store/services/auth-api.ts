@@ -27,7 +27,6 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data); //TODO: REMOVE IN PRODUCTION
           if (data.token) {
             localStorage.setItem("accessToken", data.token);
             dispatch(setUser(data.user));
@@ -61,7 +60,7 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data));
+          dispatch(setUser(data.user));
         } catch (error) {
           console.log(error);
           localStorage.removeItem("accessToken");
@@ -78,7 +77,6 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data.message);
         } catch (error) {
           console.log(error);
           //TODO: display error to the user
@@ -91,6 +89,7 @@ export const authApi = createApi({
         url: "/getUsersLikedContents",
         method: "GET",
       }),
+      
     }),
   }),
 });

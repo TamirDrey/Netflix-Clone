@@ -3,8 +3,13 @@ import Loading from "../components/Loading";
 import NavBar from "../components/NavBar";
 import Error from "../components/Error";
 import { useGetLikedContentQuery } from "../store/services/auth-api";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "../store/hooks";
+import { selectUser } from "../store/reducers/authReducer";
+import { IContent } from "../types/content-types";
 
 const MyList = () => {
+  const user = useAppSelector(selectUser);
   const { data, error, isLoading } = useGetLikedContentQuery(null);
 
   return (

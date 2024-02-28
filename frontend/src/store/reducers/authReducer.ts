@@ -22,6 +22,7 @@ export const authSlice = createSlice({
       state.isAuthenticated = true;
       return state;
     },
+
   },
 });
 
