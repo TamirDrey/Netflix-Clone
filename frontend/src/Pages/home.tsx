@@ -1,29 +1,23 @@
 import ContentList from "../components/ContentList";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 import NavBar from "../components/NavBar";
 import { useGetALLQuery } from "../store/services/content-api";
 
 const Home = () => {
   const { data, error, isLoading } = useGetALLQuery(null);
 
-  if (isLoading) {
-    console.log("loading...");
-  } else if (error) {
-    console.log(error);
-  } else {
-    console.log(data);
-  }
-
   return (
     <>
       <NavBar />
       {isLoading ? (
-        <div>Loading...</div>
+        <Loading />
       ) : error ? (
-        <div>Error</div>
+        <Error />
       ) : (
         data && (
           <>
-            <div  className="pb-40">
+            <div className="pb-40">
               <ContentList data={data} title={"kaka"} />
             </div>
           </>

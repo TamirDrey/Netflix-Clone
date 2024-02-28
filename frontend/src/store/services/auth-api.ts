@@ -54,6 +54,21 @@ export const authApi = createApi({
       },
     }),
 
+    authMe: builder.query({
+      query: () => ({
+        url: "/auth-me",
+      }),
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+        } catch (error) {
+          console.log(error);
+          localStorage.removeItem("accessToken");
+        }
+      },
+    }),
+
     likeContent: builder.mutation({
       query: (payload) => ({
         url: "/likeContent",
@@ -82,6 +97,7 @@ export const authApi = createApi({
 
 export const {
   useLikeContentMutation,
+  useAuthMeQuery,
   useSigninMutation,
   useSignupMutation,
   useGetLikedContentQuery,

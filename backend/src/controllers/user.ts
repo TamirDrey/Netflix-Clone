@@ -4,6 +4,7 @@ import { generateToken } from "../utils";
 import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
+import { JwtPayload } from "jsonwebtoken";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
@@ -44,6 +45,21 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
     });
   } else {
     res.status(401).send({ message: "Invalid User/Password" });
+  }
+};
+
+//@desc get current user
+//@route GET /api/users/auth-me
+//@acsses private
+export const getUser = async (
+  req: RequestWithUser,
+  res: Response
+): Promise<void> => {
+  const token = req.headers.authorization;
+  if (!token) {
+    res.status(401).send({ message: "Not authorized, no token" });
+  } else {
+    res.status(200).send(req.user);
   }
 };
 
