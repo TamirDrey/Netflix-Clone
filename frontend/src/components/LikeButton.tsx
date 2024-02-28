@@ -1,10 +1,5 @@
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
-import { useAppSelector } from "../store/hooks";
-import { selectUser } from "../store/reducers/authReducer";
-import {
-  useGetLikedContentQuery,
-  useLikeContentMutation,
-} from "../store/services/auth-api";
+import { useGetLikedContentQuery, useLikeContentMutation } from "../store/services/auth-api";
 import { useEffect, useState } from "react";
 
 interface LikeButtonProps {
@@ -15,7 +10,10 @@ const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
   //const user = useAppSelector(selectUser);
   const [isFavorite, setIsFavorite] = useState(false);
   const [LikeContent] = useLikeContentMutation();
+
   const { data, error, isLoading } = useGetLikedContentQuery(null);
+
+
 
   const toggleFavorites = async () => {
     await LikeContent({
