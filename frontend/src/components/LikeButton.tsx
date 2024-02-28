@@ -29,6 +29,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
       .then((payload) => {
         console.log(data);
         if (payload.message == "Liked") {
+          
           checkLikeInList();
         }
       });
