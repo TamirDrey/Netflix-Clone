@@ -86,7 +86,7 @@ export const authApi = createApi({
       },
     }),
 
-    getLikedContent: builder.query<string[], null>({
+    getLikedContent: builder.query<IContent[], null>({
       query: () => ({
         url: "/getUsersLikedContents",
         method: "GET",

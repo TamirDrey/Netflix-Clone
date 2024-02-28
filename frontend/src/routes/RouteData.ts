@@ -1,6 +1,8 @@
 import { RoutePaths } from "./RoutePaths";
 import Home from "../Pages/Home";
 import Auth from "../Pages/Auth";
+import MyList from "../Pages/MyList";
+
 
 export interface RouteItem {
   path: string;
@@ -13,4 +15,5 @@ export const PublicRoutes: RouteItem[] = [
 
 export const UserRoutes: RouteItem[] = [
   { path: RoutePaths.HOME, element: Home },
+  { path: RoutePaths.MYLIST, element: MyList },
 ];

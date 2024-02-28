@@ -77,11 +77,16 @@ export const likeContent = async (
     return;
   }
 
-  if (userDB.likedContents.includes(contentId)) {
-    res.status(400).json({ message: "Content already liked" });
+  const likedIndex = userDB.likedContents.indexOf(contentId);
+  if (likedIndex !== -1) {
+    // Content already liked, remove it from the list
+    userDB.likedContents.splice(likedIndex, 1);
+    await userDB.save();
+    res.status(200).json({ message: "Content unliked" });
     return;
   }
 
+  // If not liked already, like the content
   userDB.likedContents.push(contentId);
   await userDB.save();
 
@@ -94,11 +99,13 @@ export const getUsersLikedContents = async (
 ): Promise<void> => {
   const user = req.user;
 
-  const userDB = await User.findById(user?._id);
+  const userDB = await User.findById(user?._id).populate("likedContents").exec();
 
   if (!userDB) {
     res.status(404).json({ message: "User not found" });
     return;
   }
+
+  
   res.status(200).json(userDB.likedContents);
 };
