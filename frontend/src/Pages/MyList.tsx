@@ -11,6 +11,19 @@ import { IContent } from "../types/content-types";
 const MyList = () => {
   const user = useAppSelector(selectUser);
   const { data, error, isLoading } = useGetLikedContentQuery(null);
+  const [updatedList, setUpdatedList] = useState<IContent[]>([]);
+
+  useEffect(() => {
+    console.log(user?.likedContent);
+    // console.log(data?.length);
+    if (!user || !data) return;
+    // Filter the data to include only the liked content by the user
+    const newList = data.filter((item) =>
+      user.likedContent!.includes(item._id)
+    );
+    setUpdatedList(newList);
+    console.log(newList);
+  }, [user,data]);
 
   return (
     <>
@@ -23,7 +36,7 @@ const MyList = () => {
         data && (
           <>
             <div className="pb-40">
-              <ContentList data={data} title={"My List"} />
+              <ContentList data={updatedList} title={"My List"} />
             </div>
           </>
         )

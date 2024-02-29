@@ -2,7 +2,7 @@ export interface IUser{
     _id?:string,
     name?:string,
     email:string;
-    likeContent?:any[]
+    likedContent?:any[]
 }
 
 export interface AuthState{

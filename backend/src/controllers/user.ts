@@ -89,22 +89,25 @@ export const likeContent = async (
     return;
   }
 
+  const userToSend: IUser = {
+    _id: userDB._id,
+    name: userDB.name,
+    email: userDB.email,
+    likedContent: userDB.likedContents,
+  };
+
   const likedIndex = userDB.likedContents.indexOf(contentId);
   if (likedIndex !== -1) {
     // Content already liked, remove it from the list
     userDB.likedContents.splice(likedIndex, 1);
     await userDB.save();
-    user?.likedContent?.splice(likedIndex, 1);
-    res.status(200).json({ message: "Content unliked" });
-    return;
+    res.status(200).json({ message: "Content unliked", user: userToSend });
+  } else {
+    // If not liked already, like the content
+    userDB.likedContents.push(contentId);
+    await userDB.save();
+    res.status(200).json({ id: contentId, user: userToSend });
   }
-
-  // If not liked already, like the content
-  userDB.likedContents.push(contentId);
-  await userDB.save();
-  user?.likedContent?.push(contentId);
-
-  res.status(200).json(contentId);
 };
 
 export const getUsersLikedContents = async (
