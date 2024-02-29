@@ -77,7 +77,7 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data.user);
+
           dispatch(setUser(data.user));
         } catch (error) {
           console.log(error);
@@ -91,7 +91,6 @@ export const authApi = createApi({
         url: "/getUsersLikedContents",
         method: "GET",
       }),
-      
     }),
   }),
 });

@@ -2,8 +2,12 @@ import { IContent } from "../types/content-types";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import LikeButton from "./LikeButton";
+import { useAppDispatch } from "../store/hooks";
+import { openModal } from "../store/reducers/modalReducer";
 
 const ContentCard: React.FC<IContent> = (data) => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
@@ -74,7 +78,10 @@ const ContentCard: React.FC<IContent> = (data) => {
               <PlayIcon className="text-black w-4 lg:w-6" />
             </div>
             <LikeButton contentId={data._id} />
-            <div className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300">
+            <div
+              onClick={() => dispatch(openModal(data._id!))}
+              className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300"
+            >
               <ChevronDownIcon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" />
             </div>
           </div>

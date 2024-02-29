@@ -23,11 +23,18 @@ export const contentApi = createApi({
         method: "GET",
       }),
     }),
+    getById: builder.query<IContent, string>({
+      query: (payload) => ({
+        url: `/getById/${payload}`,
+        method: "GET",
+      }),
+    })
   }),
 });
 
 export const {
     useGetALLQuery,
+    useGetByIdQuery,
 } = contentApi
 
 

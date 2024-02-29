@@ -7,26 +7,30 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../store/hooks";
 import { selectUser } from "../store/reducers/authReducer";
 import { IContent } from "../types/content-types";
+import InfoModal from "../components/InfoModal";
+import { selectIsOpenModal } from "../store/reducers/modalReducer";
 
 const MyList = () => {
   const user = useAppSelector(selectUser);
   const { data, error, isLoading } = useGetLikedContentQuery(null);
   const [updatedList, setUpdatedList] = useState<IContent[]>([]);
+  const isOpen = useAppSelector(selectIsOpenModal);
 
-  useEffect(() => {
-    console.log(user?.likedContent);
-    // console.log(data?.length);
-    if (!user || !data) return;
-    // Filter the data to include only the liked content by the user
-    const newList = data.filter((item) =>
-      user.likedContent!.includes(item._id)
+  const update = (data: IContent[]) => {
+    const newList = data?.filter((item) =>
+      user?.likedContent!.includes(item._id)
     );
     setUpdatedList(newList);
-    console.log(newList);
-  }, [user,data]);
+  };
+
+  useEffect(() => {
+    if (!user || !data) return;
+    else update(data);
+  }, [user?.likedContent, data]);
 
   return (
     <>
+      <InfoModal visible={isOpen} />
       <NavBar />
       {isLoading ? (
         <Loading />

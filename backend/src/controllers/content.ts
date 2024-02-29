@@ -9,8 +9,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
     res.status(404).json({ message: "No content found" });
     return;
   }
-  const contentToSend: IContent[] = 
-  content.map((item) => ({
+  const contentToSend: IContent[] = content.map((item) => ({
     _id: item._id,
     title: item.title,
     description: item.description,

@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "./reducers/authReducer";
 import { authApi } from "./services/auth-api";
 import { contentApi } from './services/content-api';
+import modalReducer from './reducers/modalReducer';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     [authApi.reducerPath]: authApi.reducer,
     [contentApi.reducerPath]: contentApi.reducer,
+    modal:modalReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
