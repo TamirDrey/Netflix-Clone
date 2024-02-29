@@ -1,6 +1,8 @@
 import AppRouter from "./routes/AppRouter";
 import "./App.css";
 import { useAuthMeQuery } from "./store/services/auth-api";
+import Loading from "./components/Loading";
+import Error from "./components/Error";
 
 function App() {
   const token = localStorage.getItem("accessToken");
@@ -11,9 +13,9 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <h1>Loading... </h1>
+        <Loading/>
       ) : error ? (
-        <h1>Error occoured while fetching</h1>
+        <Error/>
       ) : (
         <AppRouter />
       )}

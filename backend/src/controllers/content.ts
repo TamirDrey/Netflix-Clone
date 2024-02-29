@@ -52,7 +52,7 @@ export const getMovies = async (req: Request, res: Response): Promise<void> => {
 };
 
 export const getById = async (req: Request, res: Response): Promise<void> => {
-  const id = req.params.id;
+  const { id } = req.params;
   const content = await Content.findById(id);
 
   if (!content) {
