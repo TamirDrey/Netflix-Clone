@@ -19,12 +19,13 @@ const Watch = () => {
           <span className="font-light">Watching:</span> {data?.title}
         </p>
       </nav>
-      <video
-        className="h-full w-full"
-        autoPlay
-        controls
+      <iframe
+        width="100%"
+        height="100%"
         src={data?.movie}
-      ></video>
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      ></iframe>
     </div>
   );
 };

@@ -17,13 +17,14 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
         </p>
         <div className="grid grid-cols-4 gap-2">
           {data.map((item) => (
-            <ContentCard
-              key={item._id}
-              genre={item.genre}
-              imgThumb={item.imgThumb}
-              duration={item.duration}
-              _id={item._id}
-            />
+
+              <ContentCard
+                key={item._id}
+                genre={item.genre}
+                imgThumb={item.imgThumb}
+                duration={item.duration}
+                _id={item._id}
+              />
           ))}
         </div>
       </div>

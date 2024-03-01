@@ -6,7 +6,7 @@ import { useGetALLQuery } from "../store/services/content-api";
 import InfoModal from "../components/InfoModal";
 import { useAppSelector } from "../store/hooks";
 import { selectIsOpenModal } from "../store/reducers/modalReducer";
-import BillBaord from "../components/BillBaord";
+import BillBaord from "../components/BillBoard";
 
 const Home = () => {
   const { data, error, isLoading } = useGetALLQuery(null);

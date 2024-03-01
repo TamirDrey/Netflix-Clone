@@ -12,18 +12,17 @@ const BillBaord = () => {
   const handleOpenModal = useCallback(() => {
     dispatch(openModal(data?._id!));
   }, [openModal, data?._id!]);
-  console.log(data?.trailer)
+  console.log(data?.trailer);
 
   return (
     <div className="relative h-[56.25vw]">
-      <video
-        poster={data?.imgThumb}
-        className="w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500"
-        autoPlay
-        muted
-        loop
+      <iframe
+        width="100%"
+        height="100%"
         src={data?.trailer}
-      ></video>
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      ></iframe>
       <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
         <p className="text-white text-1xl md:text-5xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">
           {data?.title}
