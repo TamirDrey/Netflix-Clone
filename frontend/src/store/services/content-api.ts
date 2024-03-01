@@ -28,6 +28,12 @@ export const contentApi = createApi({
         url: `/getById/${payload}`,
         method: "GET",
       }),
+    }),
+    getRandom: builder.query<IContent,null>({
+      query:() =>({
+        url: "/getRandom",
+        method: "GET",
+      })
     })
   }),
 });
@@ -35,6 +41,7 @@ export const contentApi = createApi({
 export const {
     useGetALLQuery,
     useGetByIdQuery,
+    useGetRandomQuery,
 } = contentApi
 
 

@@ -62,3 +62,26 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
 
   res.status(200).send(content);
 };
+
+export const getRandomContent = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const content = await Content.find();
+
+    if (content.length === 0) {
+      res.status(404).json({ message: "No content found" });
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * content.length);
+
+    const randomContent = content[randomIndex];
+
+    res.status(200).json(randomContent);
+  } catch (error) {
+    console.error("Error fetching random content:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};

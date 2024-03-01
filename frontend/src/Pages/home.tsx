@@ -6,6 +6,7 @@ import { useGetALLQuery } from "../store/services/content-api";
 import InfoModal from "../components/InfoModal";
 import { useAppSelector } from "../store/hooks";
 import { selectIsOpenModal } from "../store/reducers/modalReducer";
+import BillBaord from "../components/BillBaord";
 
 const Home = () => {
   const { data, error, isLoading } = useGetALLQuery(null);
@@ -15,13 +16,14 @@ const Home = () => {
     <>
       <InfoModal visible={isOpen} />
       <NavBar />
+      <BillBaord />
       {isLoading ? (
         <Loading />
-        ) : error ? (
-          <Error />
-          ) : (
-            data && (
-              <>
+      ) : error ? (
+        <Error />
+      ) : (
+        data && (
+          <>
             <div className="pb-40">
               <ContentList data={data} title={"kaka"} />
             </div>
