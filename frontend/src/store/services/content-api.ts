@@ -3,6 +3,17 @@ import { IContent } from "../../types/content-types";
 
 const BASE_URL = "http://localhost:8080/api/v1/content";
 
+export const groupByGenre = (contentList: IContent[]) => {
+  const grouped: { [key: string]: IContent[] } = {};
+  contentList.forEach((content) => {
+    if (!grouped[content.genre!]) {
+      grouped[content.genre!] = [];
+    }
+    grouped[content.genre!].push(content);
+  });
+  return grouped;
+};
+
 export const contentApi = createApi({
   reducerPath: "contentApi",
   baseQuery: fetchBaseQuery({
@@ -29,19 +40,31 @@ export const contentApi = createApi({
         method: "GET",
       }),
     }),
-    getRandom: builder.query<IContent,null>({
-      query:() =>({
+    getRandom: builder.query<IContent, null>({
+      query: () => ({
         url: "/getRandom",
         method: "GET",
-      })
-    })
+      }),
+    }),
+    getMovies: builder.query<IContent[], null>({
+      query: () => ({
+        url: "/getMovies",
+        method: "GET",
+      }),
+    }),
+    getSeries: builder.query<IContent[], null>({
+      query: () => ({
+        url: "/getSeries",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
 export const {
-    useGetALLQuery,
-    useGetByIdQuery,
-    useGetRandomQuery,
-} = contentApi
-
-
+  useGetALLQuery,
+  useGetByIdQuery,
+  useGetRandomQuery,
+  useGetMoviesQuery,
+  useGetSeriesQuery,
+} = contentApi;

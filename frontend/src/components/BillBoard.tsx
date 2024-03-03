@@ -12,7 +12,6 @@ const BillBaord = () => {
   const handleOpenModal = useCallback(() => {
     dispatch(openModal(data?._id!));
   }, [openModal, data?._id!]);
-  console.log(data?.trailer);
 
   return (
     <div className="relative h-[56.25vw]">

@@ -37,7 +37,24 @@ export const getSeries = async (req: Request, res: Response): Promise<void> => {
     return;
   }
 
-  res.status(200).send(series);
+  const seriesToSend: IContent[] = series.map((item) => ({
+    _id: item._id,
+    title: item.title,
+    description: item.description,
+    img: item.img,
+    imgTitle: item.imgTitle,
+    imgThumb: item.imgThumb,
+    imgVertical: item.imgVertical,
+    trailer: item.trailer,
+    movie: item.movie,
+    duration: item.duration,
+    year: item.year,
+    limit: item.limit,
+    genre: item.genre,
+    isSeries: item.isSeries,
+  }));
+
+  res.status(200).send(seriesToSend);
 };
 
 export const getMovies = async (req: Request, res: Response): Promise<void> => {
@@ -48,7 +65,24 @@ export const getMovies = async (req: Request, res: Response): Promise<void> => {
     return;
   }
 
-  res.status(200).send(movies);
+  const moviesToSend: IContent[] = movies.map((item) => ({
+    _id: item._id,
+    title: item.title,
+    description: item.description,
+    img: item.img,
+    imgTitle: item.imgTitle,
+    imgThumb: item.imgThumb,
+    imgVertical: item.imgVertical,
+    trailer: item.trailer,
+    movie: item.movie,
+    duration: item.duration,
+    year: item.year,
+    limit: item.limit,
+    genre: item.genre,
+    isSeries: item.isSeries,
+  }));
+
+  res.status(200).send(moviesToSend);
 };
 
 export const getById = async (req: Request, res: Response): Promise<void> => {

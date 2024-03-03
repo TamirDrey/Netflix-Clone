@@ -50,7 +50,7 @@ const NavBar = () => {
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavBarItem label="Home" active route="/home" />
           <NavBarItem label="Series" />
-          <NavBarItem label="Films" />
+          <NavBarItem label="Movies" route="/movies"/>
           <NavBarItem label="New & Popular" />
           <NavBarItem label="My List" route="/mylist" />
           <NavBarItem label="Browse by Languages" />

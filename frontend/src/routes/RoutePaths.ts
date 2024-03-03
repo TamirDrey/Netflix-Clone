@@ -3,5 +3,5 @@ export enum RoutePaths {
   AUTH = "/",
   MYLIST = "/mylist",
   WATCH = "/watch/:id",
-
+  MOVIES = "/movies",
 }
