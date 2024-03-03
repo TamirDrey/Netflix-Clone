@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BillBaord from "../components/BillBoard";
 import NavBar from "../components/NavBar";
 import { useGetMoviesQuery } from "../store/services/content-api";
-import { groupByGenre } from "../store/hooks";
+import { groupByGenre } from "../store/services/content-api";
 import { IContent } from "../types/content-types";
 import ContentList from "../components/ContentList";
 import Loading from "../components/Loading";
