@@ -23,6 +23,7 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
                 genre={item.genre}
                 imgThumb={item.imgThumb}
                 duration={item.duration}
+                trailer={item.trailer}
                 _id={item._id}
               />
           ))}

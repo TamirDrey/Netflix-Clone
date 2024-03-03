@@ -46,20 +46,13 @@ const ContentCard: React.FC<IContent> = (data) => {
         group-hover:opacity-100
       "
       >
-        <img
-          src={data.imgThumb}
-          alt=""
-          className="
-          cursor-pointer
-          object-cover
-          transition
-          duration
-          shadow-xl
-          rounded-t-md
-          w-full
-          h-[12vw]
-        "
-        />
+        <iframe
+          width="100%"
+          height="100%"
+          src={data.trailer}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        ></iframe>
         <div
           className="
           z-10
