@@ -4,10 +4,13 @@ import { openModal } from "../store/reducers/modalReducer";
 import { useGetRandomQuery } from "../store/services/content-api";
 import PlayButton from "./PlayButton";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 const BillBaord = () => {
   const dispatch = useAppDispatch();
   const { data, error, isLoading } = useGetRandomQuery(null);
+  const { t } = useTranslation();
+
 
   const handleOpenModal = useCallback(() => {
     dispatch(openModal(data?._id!));
@@ -51,7 +54,7 @@ const BillBaord = () => {
             "
           >
             <InformationCircleIcon className="w-4 md:w-7 mr-1" />
-            More Info
+            {t("info")}
           </button>
         </div>
       </div>

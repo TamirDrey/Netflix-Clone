@@ -1,4 +1,5 @@
 {
+  "signOut":"התנתק מנטפליקס",
   "signInPage": {
     "title": "התחבר",
     "button": "התחבר",
@@ -15,5 +16,28 @@
     "name": "שם",
     "password": "סיסמה",
     "email": "אמייל"
-  }
+  },
+  "navBar": {
+    "browse":"חפש",
+    "home": "דף הבית",
+    "series": "סדרות",
+    "movies": "סרטים",
+    "mylist": "הרשימה שלי"
+  },
+  "selectBox":{
+    "items": {
+      "all": "הכל",
+      "Action": "פעולה",
+      "Horror": "אימה",
+      "Animation": "אנימציה",
+      "Detective": "בלשי",
+      "Comedy": "קומדיה",
+      "Fantasy": "פנטזיה",
+      "CrimeDrama": "דרמת פשע",
+      "english": "English",
+      "hebrew": "עברית"
+    }
+  },
+  "info": "מידע",
+  "play": "נגן"
 }

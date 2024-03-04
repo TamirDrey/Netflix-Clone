@@ -7,6 +7,7 @@ import {
 import MobileMenu from "./MobileMenu";
 import NavBarItem from "./NavBarItem";
 import AccountMenu from "./AccountMenu";
+import { useTranslation } from "react-i18next";
 
 const TOP_OFFSET = 66;
 
@@ -14,6 +15,7 @@ const NavBar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,16 +50,16 @@ const NavBar = () => {
       >
         <img src="/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavBarItem label="Home" active route="/home" />
-          <NavBarItem label="Series" route="/series" />
-          <NavBarItem label="Movies" route="/movies" />
-          <NavBarItem label="My List" route="/mylist" />
+          <NavBarItem label={t("navBar.home")} active route="/home" />
+          <NavBarItem label={t("navBar.series")} route="/series" />
+          <NavBarItem label={t("navBar.movies")} route="/movies" />
+          <NavBarItem label={t("navBar.mylist")} route="/mylist" />
         </div>
         <div
           onClick={toggleMobileMenu}
           className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative"
         >
-          <p className="text-white text-sm">Browse</p>
+          <p className="text-white text-sm">{t("navBar.browse")}</p>
           <ChevronDownIcon
             className={`w-4 text-white fill-white transition ${
               showMobileMenu ? "rotate-180" : "rotate-0"

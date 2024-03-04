@@ -2,6 +2,7 @@ import React from "react";
 import { logout, selectUser } from "../store/reducers/authReducer";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface AccountMenuProps {
   visible?: boolean;
@@ -11,6 +12,8 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
   const user = useAppSelector(selectUser);
   const navigate = useNavigate();
   const dispacth = useAppDispatch();
+  const { t } = useTranslation();
+  
   
   if (!visible) {
     return null;
@@ -38,7 +41,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
         }}
         className="px-3 text-center text-white text-sm hover:underline"
       >
-        Sign out of Netflix
+        {t("signOut")}
       </div>
     </div>
   );

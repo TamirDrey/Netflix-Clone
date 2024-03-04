@@ -2,6 +2,7 @@ import React from "react";
 import { IContent } from "../types/content-types";
 import ContentCard from "./ContentCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
 interface ContentListProps {
   data: IContent[];
@@ -9,6 +10,7 @@ interface ContentListProps {
 }
 
 const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
+  const { t } = useTranslation();
   const slideLeft = () => {
     var slider = document.getElementById("slider");
     slider!.scrollLeft = slider!.scrollLeft - 500;
@@ -22,7 +24,7 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
   return (
     <div>
       <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
-        {title}
+        {t(`selectBox.items.${title}`)}
       </p>
       <div className="relative flex items-center">
         <ChevronLeftIcon

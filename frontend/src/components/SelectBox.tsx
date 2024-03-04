@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface Option {
   value: string;
@@ -12,6 +13,7 @@ interface SelectBoxProps {
 }
 
 const SelectBox: React.FC<SelectBoxProps> = ({ options, value, onChange }) => {
+  const { t } = useTranslation();
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onChange(event.target.value);
   };
@@ -24,7 +26,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({ options, value, onChange }) => {
     >
       {options.map((option, index) => (
         <option key={index} value={option.value}>
-          {option.label}
+          {t(`selectBox.items.${option.label}`)}
         </option>
       ))}
     </select>

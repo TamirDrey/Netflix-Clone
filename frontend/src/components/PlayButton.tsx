@@ -1,6 +1,7 @@
 import React from 'react';
 import { PlayIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 interface PlayButtonProps {
@@ -9,6 +10,7 @@ interface PlayButtonProps {
 
 const PlayButton: React.FC<PlayButtonProps> = ({ contentId }) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
 
   return (
@@ -30,7 +32,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ contentId }) => {
         "
       >
         <PlayIcon className="w-4 md:w-7 text-black mr-1" />
-        Play
+        {t("play")}
     </button>
   );
 }

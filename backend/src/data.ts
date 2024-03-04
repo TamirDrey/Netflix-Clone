@@ -373,7 +373,7 @@ export const data = {
       duration: "42 min",
       year: "2009-2011",
       limit: "16",
-      genre: "Crime Drama",
+      genre: "CrimeDrama",
       isSeries: true,
     },
 

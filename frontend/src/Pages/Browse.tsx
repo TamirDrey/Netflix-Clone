@@ -36,7 +36,6 @@ const Browse = () => {
     setSelectedGenre(genre);
   };
 
-
   return (
     <>
       <NavBar />
@@ -44,7 +43,7 @@ const Browse = () => {
       <div className="px-4 md:px-12 mt-4">
         <SelectBox
           options={[
-            { value: "", label: "All" },
+            { value: "", label: "all" },
             ...Object.keys(groupedContents).map((genre) => ({
               value: genre,
               label: genre,
