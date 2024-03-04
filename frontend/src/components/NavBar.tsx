@@ -49,11 +49,9 @@ const NavBar = () => {
         <img src="/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavBarItem label="Home" active route="/home" />
-          <NavBarItem label="Series" />
-          <NavBarItem label="Movies" route="/movies"/>
-          <NavBarItem label="New & Popular" />
+          <NavBarItem label="Series" route="/series" />
+          <NavBarItem label="Movies" route="/movies" />
           <NavBarItem label="My List" route="/mylist" />
-          <NavBarItem label="Browse by Languages" />
         </div>
         <div
           onClick={toggleMobileMenu}

@@ -46,7 +46,7 @@ export const contentApi = createApi({
         method: "GET",
       }),
     }),
-    getMovies: builder.query<IContent[], null>({
+    getMovies: builder.query<IContent[], null>({     
       query: () => ({
         url: "/getMovies",
         method: "GET",

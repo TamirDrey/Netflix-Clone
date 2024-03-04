@@ -3,7 +3,8 @@ import Home from "../Pages/Home";
 import Auth from "../Pages/Auth";
 import MyList from "../Pages/MyList";
 import Watch from "../Pages/Watch";
-import Movies from "../Pages/Movies";
+import Browse from "../Pages/Browse";
+
 
 
 
@@ -20,5 +21,6 @@ export const UserRoutes: RouteItem[] = [
   { path: RoutePaths.HOME, element: Home },
   { path: RoutePaths.MYLIST, element: MyList },
   { path: RoutePaths.WATCH, element: Watch },
-  { path: RoutePaths.MOVIES, element: Movies },
+  { path: RoutePaths.MOVIES, element: Browse },
+  { path: RoutePaths.SERIES, element: Browse },
 ];

@@ -1,30 +1,41 @@
 import { useEffect, useState } from "react";
 import BillBaord from "../components/BillBoard";
 import NavBar from "../components/NavBar";
-import { useGetMoviesQuery } from "../store/services/content-api";
+import {
+  useGetMoviesQuery,
+  useGetSeriesQuery,
+} from "../store/services/content-api";
 import { groupByGenre } from "../store/services/content-api";
 import { IContent } from "../types/content-types";
 import ContentList from "../components/ContentList";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import SelectBox from "../components/SelectBox";
+import { useLocation } from "react-router-dom";
 
-const Movies = () => {
-  const { data, error, isLoading } = useGetMoviesQuery(null);
+const Browse = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const { data, error, isLoading } =
+    currentPath == "/movies"
+      ? useGetMoviesQuery(null)
+      : useGetSeriesQuery(null);
+
   const [groupedContents, setGroupedContents] = useState<{
     [key: string]: IContent[];
   }>({});
+
   const [selectedGenre, setSelectedGenre] = useState<string>("");
 
   useEffect(() => {
     if (!data) return;
-    // Using the imported groupByGenre function
     setGroupedContents(groupByGenre(data));
   }, [data]);
 
   const handleGenreChange = (genre: string) => {
     setSelectedGenre(genre);
   };
+
 
   return (
     <>
@@ -72,4 +83,4 @@ const Movies = () => {
     </>
   );
 };
-export default Movies;
+export default Browse;

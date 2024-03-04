@@ -1,3 +1,5 @@
+import NavBarItem from "./NavBarItem";
+
 interface MobileMenuProps {
   visible?: boolean;
 }
@@ -9,19 +11,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ visible }) => {
   return (
     <div className="bg-black w-56 absolute top-8 left-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-4">
-        <div className="px-3 text-center text-white hover:underline">Home</div>
         <div className="px-3 text-center text-white hover:underline">
-          Series
-        </div>
-        <div className="px-3 text-center text-white hover:underline">Films</div>
-        <div className="px-3 text-center text-white hover:underline">
-          New & Popular
+          <NavBarItem label="Home" active route="/home" />
         </div>
         <div className="px-3 text-center text-white hover:underline">
-          My List
+          <NavBarItem label="Series" active route="/series" />
         </div>
         <div className="px-3 text-center text-white hover:underline">
-          Browse by Languages
+          <NavBarItem label="Movies" active route="/movies" />
+        </div>
+        <div className="px-3 text-center text-white hover:underline">
+        <NavBarItem label="My List" active route="/mylist" />
         </div>
       </div>
     </div>
