@@ -1,8 +1,19 @@
 {
   "signInPage": {
-    "title": "התחבר"
+    "title": "התחבר",
+    "button": "התחבר",
+    "firstLogin" : "פעם ראשונה מתחבר לנטפליקס? ",
+    "login": "התחבר"
   },
   "signUpPage": {
-    "title": "הרשם"
+    "title": "הרשם",
+    "button": "הרשם",
+    "haveAccount": "יש לך כבר משתמש? ",
+    "creat": "צור משתמש"
+  },
+  "form": {
+    "name": "שם",
+    "password": "סיסמה",
+    "email": "אמייל"
   }
 }

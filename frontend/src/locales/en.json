@@ -1,8 +1,20 @@
 {
   "signInPage": {
-    "title": "Sign In"
+    "title": "Sign In",
+    "button": "Sign In",
+    "firstLogin" : "first time using Netflix? ",
+    "login": "login"
   },
   "signUpPage": {
-    "title": "Sign Up"
+    "title": "Sign Up",
+    "button": "Sign Up",
+    "haveAccount": "Already have an account? ",
+    "creat": "create an account"
+  },
+  "form": {
+    "name": "Name",
+    "password": "Password",
+    "email": "Email"
   }
+
 }

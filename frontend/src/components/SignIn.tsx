@@ -50,13 +50,13 @@ const SignIn = () => {
           <div className="flex flex-col gap-4">
             <Input
               type="email"
-              label="Email"
+              label={t("form.email")}
               onChange={(value) => setEmailValue(value)}
               validate={validateEmail}
               required={true}
             />
             <Input
-              label="password"
+              label={t("form.password")}
               type="password"
               onChange={(value) => setPasswordValue(value)}
               validate={validatePassword}
@@ -66,7 +66,7 @@ const SignIn = () => {
               type="submit"
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
-              {t("signInPage.title")}
+              {t("signInPage.button")}
             </button>
           </div>
         </form>

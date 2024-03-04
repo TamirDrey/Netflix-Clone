@@ -55,20 +55,20 @@ const SignUp = () => {
         <div className="flex flex-col gap-4">
           <Input
             type="text"
-            label="Name"
+            label={t("form.name")}
             onChange={(value) => setNameValue(value)}
             validate={checkName}
             required={true}
           />
           <Input
             type="email"
-            label="Email"
+            label={t("form.email")}
             onChange={(value) => setEmailValue(value)}
             validate={checkEmail}
             required={true}
           />
           <Input
-            label="password"
+            label={t("form.password")}
             type="password"
             onChange={(value) => setPasswordValue(value)}
             validate={checkPassword}
@@ -78,7 +78,7 @@ const SignUp = () => {
             type="submit"
             className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
           >
-            {t("signUpPage.title")}
+            {t("signUpPage.button")}
           </button>
         </div>
       </form>

@@ -5,15 +5,18 @@ import { PublicRoutes, UserRoutes } from "./RouteData";
 import { selectIsAuthenticated } from "../store/reducers/authReducer";
 import { useAppSelector } from "../store/hooks";
 import SignIn from "../components/SignIn";
+import Home from "../Pages/Home";
 
 const AppRouter = () => {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const token = localStorage.getItem("accessToken");
+  
   return (
     <Router>
       <I18nextProvider i18n={i18n}>
         <Routes>
           {!isAuthenticated && (
-            <>
+            <>        
               {PublicRoutes.map((route) => (
                 <Route
                   path={route.path}
@@ -24,7 +27,7 @@ const AppRouter = () => {
               <Route path="/*"  element={<SignIn />} />
             </>
           )}
-          {isAuthenticated && (
+          {isAuthenticated && token &&(
             <>
               {UserRoutes.map((route) => (
                 <Route
@@ -33,6 +36,7 @@ const AppRouter = () => {
                   element={<route.element />}
                 />
               ))}
+              <Route path="/*"  element={<Home />} />
             </>
           )}
         </Routes>
