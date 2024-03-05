@@ -1,8 +1,5 @@
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
-import {
-  useGetLikedContentQuery,
-  useLikeContentMutation,
-} from "../store/services/auth-api";
+import { useLikeContentMutation } from "../store/services/auth-api";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../store/hooks";
 import { selectUser } from "../store/reducers/authReducer";
@@ -14,33 +11,25 @@ interface LikeButtonProps {
 const LikeButton: React.FC<LikeButtonProps> = ({ contentId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [LikeContent] = useLikeContentMutation();
-  const { data, error, isLoading } = useGetLikedContentQuery(null);
   const user = useAppSelector(selectUser);
 
   const toggleFavorites = async () => {
-    await LikeContent({
-      contentId: contentId,
-    })
-      .unwrap()
-      .then((payload) => {
-        if (payload.id == contentId) {
-          setIsFavorite(true);
-        } else if (payload.message == "Content unliked") {
-          setIsFavorite(false);
-        } else {
-          setIsFavorite(false);
-        }
+    try {
+      await LikeContent({
+        contentId: contentId,
       });
-  };
-
-  const checkInUserList = () => {
-    data?.map((item) => {
-      if (item._id == contentId && user?.likedContent?.includes(contentId)) setIsFavorite(true);
-    });
+    } catch (error) {
+      console.error("Error toggling favorites:", error);
+    }
   };
   useEffect(() => {
-    checkInUserList();
-  }, [data]);
+    if (user?.likedContent && user.likedContent.length > 0) {
+      const found = user.likedContent.some((item) => item._id === contentId);
+      setIsFavorite(found);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [user]);
 
   const Icon = isFavorite ? CheckIcon : PlusIcon;
 

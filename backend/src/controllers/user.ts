@@ -5,6 +5,8 @@ import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
 import { JwtPayload } from "jsonwebtoken";
+import { log } from "console";
+import Content from "../models/content/content";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
@@ -63,7 +65,7 @@ export const getUser = async (
   if (!token) {
     res.status(401).send({ message: "Not authorized, no token" });
   }
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).populate("likedContents").exec();
   if (user) {
     const userToSend: IUser = {
       _id: user._id,
@@ -82,12 +84,34 @@ export const likeContent = async (
   const { contentId } = req.body;
   const user = req.user;
 
-  const userDB = await User.findById(user?._id);
+  const userDB = await User.findById(user?._id)
+    .populate("likedContents")
+    .exec();
 
   if (!userDB) {
     res.status(404).json({ message: "User not found" });
     return;
   }
+
+  const contentToAdd: any = await Content.findById(contentId);
+  if (!contentToAdd) {
+    res.status(404).json({ message: "Content not found" });
+    return;
+  }
+
+  const contentIndex = userDB.likedContents.findIndex(
+    (content: any) => String(content._id) === contentId
+  );
+
+  if (contentIndex === -1) {
+    // If contentId not found, add it to the list
+    userDB.likedContents.push(contentToAdd);
+  } else {
+    // If contentId found, remove it from the list
+    userDB.likedContents.splice(contentIndex, 1);
+  }
+
+  await userDB.save();
 
   const userToSend: IUser = {
     _id: userDB._id,
@@ -96,18 +120,7 @@ export const likeContent = async (
     likedContent: userDB.likedContents,
   };
 
-  const likedIndex = userDB.likedContents.indexOf(contentId);
-  if (likedIndex !== -1) {
-    // Content already liked, remove it from the list
-    userDB.likedContents.splice(likedIndex, 1);
-    await userDB.save();
-    res.status(200).json({ message: "Content unliked", user: userToSend });
-  } else {
-    // If not liked already, like the content
-    userDB.likedContents.push(contentId);
-    await userDB.save();
-    res.status(200).json({ id: contentId, user: userToSend });
-  }
+  res.status(200).json({ id: contentId, user: userToSend });
 };
 
 export const getUsersLikedContents = async (

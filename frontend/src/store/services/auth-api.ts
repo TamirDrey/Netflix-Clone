@@ -77,20 +77,12 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-
           dispatch(setUser(data.user));
         } catch (error) {
           console.log(error);
           //TODO: display error to the user
         }
       },
-    }),
-
-    getLikedContent: builder.query<IContent[], null>({
-      query: () => ({
-        url: "/getUsersLikedContents",
-        method: "GET",
-      }),
     }),
   }),
 });
@@ -100,5 +92,4 @@ export const {
   useAuthMeQuery,
   useSigninMutation,
   useSignupMutation,
-  useGetLikedContentQuery,
 } = authApi;
