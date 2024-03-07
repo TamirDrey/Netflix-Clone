@@ -33,7 +33,8 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 export const signin = async (req: Request, res: Response): Promise<void> => {
   const { password, email } = req.body;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).populate("likedContents")
+  .exec();;
 
   if (user && bcrypt.compareSync(password, user.password)) {
     const userToSend: IUser = {

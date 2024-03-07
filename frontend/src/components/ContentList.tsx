@@ -38,9 +38,9 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
         >
           <div className="flex flex-row gap-3">
             {data.map((item) => (
-              <div className="flex-shrink-0">
+              <div key={item._id} className="flex-shrink-0">
                 <ContentCard
-                  key={item._id}
+                  
                   genre={item.genre}
                   imgThumb={item.imgThumb}
                   duration={item.duration}

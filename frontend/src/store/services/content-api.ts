@@ -58,6 +58,12 @@ export const contentApi = createApi({
         method: "GET",
       }),
     }),
+    getSearch: builder.query<IContent[], string>({
+      query: () => ({
+        url: "/search",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -67,4 +73,5 @@ export const {
   useGetRandomQuery,
   useGetMoviesQuery,
   useGetSeriesQuery,
+  useGetSearchQuery
 } = contentApi;
