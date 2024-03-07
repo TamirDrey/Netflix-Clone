@@ -8,9 +8,8 @@ import { useTranslation } from "react-i18next";
 
 const BillBaord = () => {
   const dispatch = useAppDispatch();
-  const { data, error, isLoading } = useGetRandomQuery(null);
+  const { data } = useGetRandomQuery(null);
   const { t } = useTranslation();
-
 
   const handleOpenModal = useCallback(() => {
     dispatch(openModal(data?._id!));
@@ -21,7 +20,7 @@ const BillBaord = () => {
       <iframe
         width="100%"
         height="100%"
-        src={data?.trailer}
+        src={`${data?.trailer}&controls=0`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>

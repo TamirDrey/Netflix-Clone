@@ -35,10 +35,11 @@
       "Fantasy": "Fantasy",
       "CrimeDrama": "CrimeDrama",
       "english": "English",
-      "hebrew": "עברית",
-      "myList" : "My List"
+      "hebrew": "עברית"
+      
     }
   },
+  "myList" : "My List",
   "info": "More Info",
   "play": "Play"
 }

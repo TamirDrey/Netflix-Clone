@@ -48,7 +48,7 @@ const ContentCard: React.FC<IContent> = (data) => {
         w-full
         scale-0
         group-hover:scale-110
-        group-hover:-translate-y-[6vw]
+        group-hover:-translate-y-[5vw]
         group-hover:translate-x-[2vw]
         group-hover:opacity-100
       "
@@ -56,7 +56,7 @@ const ContentCard: React.FC<IContent> = (data) => {
           <iframe
             width="100%"
             height="100%"
-            src={data.trailer}
+            src={`${data.trailer}&controls=0`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
