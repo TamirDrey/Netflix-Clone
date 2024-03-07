@@ -1,10 +1,9 @@
-import NavBar from "../components/NavBar";
 import { useAppSelector } from "../store/hooks";
 import { selectUser } from "../store/reducers/authReducer";
-import InfoModal from "../components/InfoModal";
 import { selectIsOpenModal } from "../store/reducers/modalReducer";
 import ContentCard from "../components/ContentCard";
 import { useTranslation } from "react-i18next";
+import Layout from "../components/Layout";
 
 const MyList = () => {
   const user = useAppSelector(selectUser);
@@ -12,9 +11,7 @@ const MyList = () => {
   const { t } = useTranslation();
 
   return (
-    <>
-      <InfoModal visible={isOpen} />
-      <NavBar />
+    <Layout showInfoModal={isOpen} showBillBoard={false}>
       <div className="absolute px-4 md:px-12 mt-20 space-y-8 ">
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-10">
           {t("myList")}
@@ -32,7 +29,7 @@ const MyList = () => {
           ))}
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

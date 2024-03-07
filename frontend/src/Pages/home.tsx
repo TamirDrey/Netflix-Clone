@@ -1,14 +1,12 @@
 import ContentList from "../components/ContentList";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import NavBar from "../components/NavBar";
 import { useGetALLQuery } from "../store/services/content-api";
-import InfoModal from "../components/InfoModal";
 import { useAppSelector } from "../store/hooks";
 import { selectIsOpenModal } from "../store/reducers/modalReducer";
-import BillBaord from "../components/BillBoard";
 import { useEffect, useState } from "react";
 import { IContent } from "../types/content-types";
+import Layout from '../components/Layout';
 
 const Home = () => {
   const { data, error, isLoading } = useGetALLQuery(null);
@@ -33,10 +31,7 @@ const Home = () => {
   }, [data]);
 
   return (
-    <>
-      <InfoModal visible={isOpen} />
-      <NavBar />
-      <BillBaord />
+    <Layout showInfoModal={isOpen} >
       {isLoading ? (
         <Loading />
       ) : error ? (
@@ -56,7 +51,7 @@ const Home = () => {
           </>
         )
       )}
-    </>
+    </Layout>
   );
 };
 

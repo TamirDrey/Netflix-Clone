@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetByIdQuery } from "../store/services/content-api";
@@ -6,7 +5,7 @@ import { useGetByIdQuery } from "../store/services/content-api";
 const Watch = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { data, error, isLoading } = useGetByIdQuery(id!);
+  const { data } = useGetByIdQuery(id!);
 
   return (
     <div className="h-screen w-screen bg-black">

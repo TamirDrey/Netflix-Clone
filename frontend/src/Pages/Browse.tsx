@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import BillBaord from "../components/BillBoard";
-import NavBar from "../components/NavBar";
 import {
   useGetMoviesQuery,
   useGetSeriesQuery,
@@ -12,6 +10,7 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import SelectBox from "../components/SelectBox";
 import { useLocation } from "react-router-dom";
+import Layout from "../components/Layout";
 
 const Browse = () => {
   const location = useLocation();
@@ -24,7 +23,6 @@ const Browse = () => {
   const [groupedContents, setGroupedContents] = useState<{
     [key: string]: IContent[];
   }>({});
-
   const [selectedGenre, setSelectedGenre] = useState<string>("");
 
   useEffect(() => {
@@ -37,9 +35,7 @@ const Browse = () => {
   };
 
   return (
-    <>
-      <NavBar />
-      <BillBaord />
+    <Layout>
       <div className="px-4 md:px-12 mt-4">
         <SelectBox
           options={[
@@ -79,7 +75,7 @@ const Browse = () => {
           </>
         )
       )}
-    </>
+    </Layout>
   );
 };
 export default Browse;
