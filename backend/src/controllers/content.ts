@@ -119,3 +119,17 @@ export const getRandomContent = async (
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getContentBySearch = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const letter: string = req.query.q as string;  
+  const regex = new RegExp(`^${letter}`, "i");
+  const searchData = await Content.find({ title: { $regex: regex } });
+  if (!searchData.length) {
+    res.status(404).json({ error: "Content not found" });
+    return;
+  }
+  res.json(searchData); 
+}

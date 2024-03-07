@@ -59,8 +59,8 @@ export const contentApi = createApi({
       }),
     }),
     getSearch: builder.query<IContent[], string>({
-      query: () => ({
-        url: "/search",
+      query: (searchQuery) => ({
+        url: `/search?q=${searchQuery}`,
         method: "GET",
       }),
     }),

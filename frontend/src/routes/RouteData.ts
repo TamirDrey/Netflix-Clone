@@ -4,6 +4,7 @@ import Auth from "../Pages/Auth";
 import MyList from "../Pages/MyList";
 import Watch from "../Pages/Watch";
 import Browse from "../Pages/Browse";
+import Search from "../Pages/Search";
 
 
 
@@ -23,4 +24,5 @@ export const UserRoutes: RouteItem[] = [
   { path: RoutePaths.WATCH, element: Watch },
   { path: RoutePaths.MOVIES, element: Browse },
   { path: RoutePaths.SERIES, element: Browse },
+  { path: RoutePaths.SEARCH, element: Search },
 ];

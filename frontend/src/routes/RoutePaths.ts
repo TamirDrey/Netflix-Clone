@@ -4,5 +4,6 @@ export enum RoutePaths {
   MYLIST = "/mylist",
   WATCH = "/watch/:id",
   MOVIES = "/movies",
-  SERIES = "/series"
+  SERIES = "/series",
+  SEARCH = "/search"
 }
