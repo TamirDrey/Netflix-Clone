@@ -80,7 +80,7 @@ const NavBar = () => {
           >
             <MagnifyingGlassIcon className="w-6" />
           </div>
-          {showSearchBox && <SearchBox />}
+          {showSearchBox && <SearchBox />}6
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BellIcon className="w-6" />
           </div>

@@ -6,6 +6,7 @@ import { selectIsAuthenticated } from "../store/reducers/authReducer";
 import { useAppSelector } from "../store/hooks";
 import SignIn from "../components/SignIn";
 import Home from "../Pages/Home";
+import Auth from "../Pages/Auth";
 
 const AppRouter = () => {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
@@ -24,7 +25,7 @@ const AppRouter = () => {
                   element={<route.element />}
                 />
               ))}
-              <Route path="/*"  element={<SignIn />} />
+              <Route path="/*"  element={<Auth />} />
             </>
           )}
           {isAuthenticated && token &&(
