@@ -11,13 +11,13 @@ import Auth from "../Pages/Auth";
 const AppRouter = () => {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const token = localStorage.getItem("accessToken");
-  
+
   return (
     <Router>
       <I18nextProvider i18n={i18n}>
         <Routes>
           {!isAuthenticated && (
-            <>        
+            <>
               {PublicRoutes.map((route) => (
                 <Route
                   path={route.path}
@@ -25,10 +25,10 @@ const AppRouter = () => {
                   element={<route.element />}
                 />
               ))}
-              <Route path="/*"  element={<Auth />} />
+              <Route path="/*" element={<Auth />} />
             </>
           )}
-          {isAuthenticated && token &&(
+          {isAuthenticated && token && (
             <>
               {UserRoutes.map((route) => (
                 <Route
@@ -37,7 +37,7 @@ const AppRouter = () => {
                   element={<route.element />}
                 />
               ))}
-              <Route path="/*"  element={<Home />} />
+              <Route path="/*" element={<Home />} />
             </>
           )}
         </Routes>

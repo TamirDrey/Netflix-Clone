@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../reducers/authReducer";
-import { IContent } from "../../types/content-types";
 
 const BASE_URL = "http://localhost:8080/api/v1/users";
 

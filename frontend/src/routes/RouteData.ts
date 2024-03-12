@@ -6,9 +6,6 @@ import Watch from "../Pages/Watch";
 import Browse from "../Pages/Browse";
 import Search from "../Pages/Search";
 
-
-
-
 export interface RouteItem {
   path: string;
   element: React.ComponentType;

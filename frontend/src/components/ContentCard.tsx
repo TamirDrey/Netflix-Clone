@@ -5,10 +5,13 @@ import LikeButton from "./LikeButton";
 import { useAppDispatch } from "../store/hooks";
 import { openModal } from "../store/reducers/modalReducer";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ContentCard: React.FC<IContent> = (data) => {
   const [isHovered, setIsHovered] = useState(false);
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -75,7 +78,10 @@ const ContentCard: React.FC<IContent> = (data) => {
           >
             <div className="flex flex-row items-center gap-3">
               <div className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300">
-                <PlayIcon className="text-black w-4 lg:w-6" />
+                <PlayIcon
+                  className="text-black w-4 lg:w-6"
+                  onClick={() => navigate(`/watch/${data._id}`)}
+                />
               </div>
               <LikeButton contentId={data._id} />
               <div

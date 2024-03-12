@@ -11,11 +11,13 @@ import Error from "../components/Error";
 import SelectBox from "../components/SelectBox";
 import { useLocation } from "react-router-dom";
 import Layout from "../components/Layout";
+import { useAppSelector } from "@/store/hooks";
+import { selectIsOpenModal } from "@/store/reducers/modalReducer";
 
 const Browse = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const { data, error, isLoading } =
+  let { data, error, isLoading } =
     currentPath == "/movies"
       ? useGetMoviesQuery(null)
       : useGetSeriesQuery(null);
@@ -24,18 +26,20 @@ const Browse = () => {
     [key: string]: IContent[];
   }>({});
   const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const isOpen = useAppSelector(selectIsOpenModal);
 
   useEffect(() => {
     if (!data) return;
     setGroupedContents(groupByGenre(data));
-  }, [data]);
+    data = data;
+  }, [data, currentPath]);
 
   const handleGenreChange = (genre: string) => {
     setSelectedGenre(genre);
   };
 
   return (
-    <Layout>
+    <Layout showInfoModal={isOpen}>
       <div className="px-4 md:px-12 mt-4">
         <SelectBox
           options={[
