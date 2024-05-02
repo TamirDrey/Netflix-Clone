@@ -3,8 +3,6 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { Error } from "mongoose";
-import { errorHandler } from "./middleware/errorHandler";
-
 import userRouter from "./routes/user";
 import seedRouter from "./routes/seed";
 import contentRouter from "./routes/content";
@@ -22,9 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/v1/seed", seedRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/content", contentRouter);
-
-// Error handling middleware
-app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 

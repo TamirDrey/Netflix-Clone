@@ -1,0 +1,46 @@
+{
+    "signOut": "Abmelden von Netflix",
+    "signInPage": {
+      "title": "Anmelden",
+      "button": "Anmelden",
+      "firstLogin": "Erstmalige Nutzung von Netflix?",
+      "login": "Anmelden"
+    },
+    "signUpPage": {
+      "title": "Registrieren",
+      "button": "Registrieren",
+      "haveAccount": "Haben Sie bereits ein Konto?",
+      "create": "Ein Konto erstellen"
+    },
+    "form": {
+      "name": "Name",
+      "password": "Passwort",
+      "email": "E-Mail"
+    },
+    "navBar": {
+      "browse": "Durchsuchen",
+      "home": "Startseite",
+      "series": "Serien",
+      "movies": "Filme",
+      "mylist": "Meine Liste"
+    },
+    "selectBox": {
+      "items": {
+        "all": "All",
+        "Action": "Action",
+        "Horror": "Horror",
+        "Animation": "Animation",
+        "Detective": "Detektiv",
+        "Comedy": "Komödie",
+        "Fantasy": "Fantasy",
+        "CrimeDrama": "Krimi-Drama",
+        "english": "Englisch",
+        "spanish": "Spanisch",
+        "german": "Deutsch"
+      }
+    },
+    "myList": "Meine Liste",
+    "info": "Weitere Informationen",
+    "play": "Abspielen"
+  }
+  

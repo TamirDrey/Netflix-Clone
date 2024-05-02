@@ -1,16 +1,16 @@
 {
-  "signOut":"Sign out of Netflix",
+  "signOut": "Sign out of Netflix",
   "signInPage": {
     "title": "Sign In",
     "button": "Sign In",
-    "firstLogin" : "first time using Netflix? ",
+    "firstLogin": "first time using Netflix? ",
     "login": "login"
   },
   "signUpPage": {
     "title": "Sign Up",
     "button": "Sign Up",
     "haveAccount": "Already have an account? ",
-    "creat": "create an account"
+    "create": "create an account"
   },
   "form": {
     "name": "Name",
@@ -18,13 +18,13 @@
     "email": "Email"
   },
   "navBar": {
-    "browse":"Browse",
+    "browse": "Browse",
     "home": "Home",
     "series": "Series",
     "movies": "Movies",
     "mylist": "My List"
   },
-  "selectBox":{
+  "selectBox": {
     "items": {
       "all": "All",
       "Action": "Action",
@@ -35,11 +35,11 @@
       "Fantasy": "Fantasy",
       "CrimeDrama": "Crime Drama",
       "english": "English",
-      "hebrew": "עברית"
-      
+      "spanish": "Español",
+      "german": "Deutsch"
     }
   },
-  "myList" : "My List",
+  "myList": "My List",
   "info": "More Info",
   "play": "Play"
 }

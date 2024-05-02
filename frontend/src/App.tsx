@@ -15,7 +15,7 @@ function App() {
       {isLoading ? (
         <Loading/>
       ) : error ? (
-        <Error/>
+        <Error message={error}/>
       ) : (
         <AppRouter />
       )}

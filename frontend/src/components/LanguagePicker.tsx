@@ -9,7 +9,6 @@ const LanguagePicker = () => {
   const changeLanguage = (lng: string) => {
     i18n?.changeLanguage(lng);
     setSelectedGenre(lng);
-    document.documentElement.dir = lng === "he" ? "rtl" : "ltr";
   };
 
 
@@ -17,9 +16,10 @@ const LanguagePicker = () => {
     <div className="px-4 md:px-12 mt-4">
       <SelectBox
         options={[
-          { value: "", label: "all" },
+          { value: "en", label: "all" },
           { value: "en", label:"english" },
-          { value: "he", label: "hebrew" },
+          { value: "es", label: "spanish" },
+          { value: "de", label: "german" },
         ]}
         value={selectedLanguage}
         onChange={changeLanguage}

@@ -33,7 +33,7 @@ const Auth = () => {
                   ? (t("signInPage.firstLogin"))
                   : (t("signUpPage.haveAccount"))}
                 <span onClick={toggleVariant} className="text-white ml-1 hover:underline cursor-pointer">
-                  {variant === "login" ? (t("signUpPage.creat")) : (t("signInPage.login"))}
+                  {variant === "login" ? (t("signUpPage.create")) : (t("signInPage.login"))}
                 </span>
               </p>
             </div>

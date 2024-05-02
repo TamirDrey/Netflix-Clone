@@ -2,7 +2,6 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import { Response, NextFunction } from "express";
 import { UserDocument } from "./models/user/UserDocument";
-import { errorsCodes } from "./constants/errorHandlerConsts";
 import { RequestWithUser } from "./types/requests-type";
 import { IUser } from "./types/user-type";
 
@@ -20,7 +19,7 @@ export const isAuth = asyncHandler(
       token = (authHeader as string).split(" ")[1];
       jwt.verify(token, process.env.JWT_PW as string, (err, decode) => {
         if (err)
-          res.status(errorsCodes.UNAUTHORIZED).send({ message: err.message });
+          res.status(401).send({ message: err.message });
         else {
           const user: IUser = {
             _id: (decode as JwtPayload)._id,

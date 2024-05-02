@@ -25,14 +25,10 @@ const ContentList: React.FC<ContentListProps> = ({ data, title }) => {
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {t(`selectBox.items.${title}`)}
         </p>
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-        >
+        <Carousel>
           <CarouselContent>
             {data.map((item) => (
-              <CarouselItem className="pl-1 sm:basis-1/4 md:basis-1/4 lg:basis-1/4">
+              <CarouselItem  key={item._id}>
                 <ContentCard
                   genre={item.genre}
                   imgThumb={item.imgThumb}

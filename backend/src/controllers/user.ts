@@ -4,8 +4,6 @@ import { generateToken } from "../utils";
 import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
-import { JwtPayload } from "jsonwebtoken";
-import { log } from "console";
 import Content from "../models/content/content";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {

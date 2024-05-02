@@ -35,7 +35,7 @@ const Home = () => {
       {isLoading ? (
         <Loading />
       ) : error ? (
-        <Error />
+        <Error message={error}/>
       ) : (
         data && (
           <>

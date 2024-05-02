@@ -1,9 +1,21 @@
-const Error = () => {
+import { useEffect, useState } from "react";
 
-  return (
-    <div className="text-white">OMER THE ZION </div>
-  )
+interface ErrorProps {
+  message: any;
 }
-export default Error
 
+const Error: React.FC<ErrorProps> = ( {message} ) => {
 
+  const [errorMessage, setErrorMessage] = useState<any>(undefined); 
+
+  useEffect(() => {
+    if(message){
+      if ("data" in message || "error" in message) {
+        setErrorMessage(message.data.error)
+      } 
+    }
+  })
+
+  return <div className="text-white">{errorMessage} </div>;
+};
+export default Error;
