@@ -2,7 +2,6 @@ import { Document } from "mongoose";
 
 // Interface representing the Content document in MongoDB
 export interface ContentDocument extends Document {
-  _id: string;
   title: string;
   description: string;
   img: string;

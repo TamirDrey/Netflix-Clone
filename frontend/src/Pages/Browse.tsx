@@ -17,7 +17,7 @@ import { selectIsOpenModal } from "@/store/reducers/modalReducer";
 const Browse = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  let { data, error, isLoading } =
+  const { data, error, isLoading } =
     currentPath == "/movies"
       ? useGetMoviesQuery(null)
       : useGetSeriesQuery(null);
@@ -31,7 +31,6 @@ const Browse = () => {
   useEffect(() => {
     if (!data) return;
     setGroupedContents(groupByGenre(data));
-    data = data;
   }, [data, currentPath]);
 
   const handleGenreChange = (genre: string) => {
