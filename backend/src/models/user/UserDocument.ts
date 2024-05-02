@@ -1,8 +1,9 @@
-import { Document, Schema } from "mongoose";
+import { Document, ObjectId, Schema } from "mongoose";
 
 // Interface representing the User document in MongoDB
 
 export interface UserDocument extends Document {
+  _id: string;
   name: string;
   email: string;
   password: string;

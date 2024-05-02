@@ -5,6 +5,7 @@ import { ContentModel } from "./ContentModel";
 // Define the content schema
 const contentSchema = new Schema<ContentDocument, ContentModel>(
   {
+    _id:{type: String},
     title: { type: String, required: true, unique: true },
     description: { type: String, required: true },
     img: { type: String, required: true },

@@ -5,6 +5,7 @@ import { UserModel } from "./UserModel";
 // Define the user schema
 const userSchema = new Schema<UserDocument, UserModel>(
   {
+    _id:{ type: String},
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
