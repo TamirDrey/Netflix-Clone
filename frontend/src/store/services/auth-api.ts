@@ -41,14 +41,7 @@ export const authApi = createApi({
         url: "/signup",
         method: "POST",
         body: payload,
-      }),
-      async onQueryStarted(args, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-        } catch (error) {
-          console.log(error);
-        }
-      },
+      })
     }),
 
     authMe: builder.query({
@@ -74,11 +67,10 @@ export const authApi = createApi({
       }),
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled; 
+          const { data } = await queryFulfilled;
           dispatch(setUser(data.user));
         } catch (error) {
           console.log(error);
-          //TODO: display error to the user
         }
       },
     }),

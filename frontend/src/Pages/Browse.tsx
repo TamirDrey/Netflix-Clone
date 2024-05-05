@@ -17,10 +17,17 @@ import { selectIsOpenModal } from "@/store/reducers/modalReducer";
 const Browse = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const { data, error, isLoading } =
-    currentPath == "/movies"
-      ? useGetMoviesQuery(null)
-      : useGetSeriesQuery(null);
+
+  const {
+    data: moviesData,
+    error: moviesError,
+    isLoading: moviesLoading,
+  } = useGetMoviesQuery(null);
+  const {
+    data: seriesData,
+    error: seriesError,
+    isLoading: seriesLoading,
+  } = useGetSeriesQuery(null);
 
   const [groupedContents, setGroupedContents] = useState<{
     [key: string]: IContent[];
@@ -29,13 +36,18 @@ const Browse = () => {
   const isOpen = useAppSelector(selectIsOpenModal);
 
   useEffect(() => {
+    const data = currentPath === "/movies" ? moviesData : seriesData;
     if (!data) return;
     setGroupedContents(groupByGenre(data));
-  }, [data, currentPath]);
+    setSelectedGenre("");
+  }, [currentPath, moviesData, seriesData]);
 
   const handleGenreChange = (genre: string) => {
     setSelectedGenre(genre);
   };
+
+  const isLoading = currentPath === "/movies" ? moviesLoading : seriesLoading;
+  const error = currentPath === "/movies" ? moviesError : seriesError;
 
   return (
     <Layout showInfoModal={isOpen}>
@@ -57,26 +69,24 @@ const Browse = () => {
       ) : error ? (
         <Error message={error} />
       ) : (
-        data && (
-          <>
-            <div className="pb-40">
-              {selectedGenre ? (
+        <>
+          <div className="pb-40">
+            {selectedGenre ? (
+              <ContentList
+                data={groupedContents[selectedGenre]}
+                title={selectedGenre}
+              />
+            ) : (
+              Object.keys(groupedContents).map((genre, index) => (
                 <ContentList
-                  data={groupedContents[selectedGenre]}
-                  title={selectedGenre}
+                  key={index}
+                  data={groupedContents[genre]}
+                  title={genre}
                 />
-              ) : (
-                Object.keys(groupedContents).map((genre, index) => (
-                  <ContentList
-                    key={index}
-                    data={groupedContents[genre]}
-                    title={genre}
-                  />
-                ))
-              )}
-            </div>
-          </>
-        )
+              ))
+            )}
+          </div>
+        </>
       )}
     </Layout>
   );

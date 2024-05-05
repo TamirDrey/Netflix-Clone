@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import { IContent } from "../types/content-type";
 import { Extensions } from "../Extensions";
 
+//@route POST /api/v1/content/getAll
+//@access private
 export const getAll = async (req: Request, res: Response): Promise<void> => {
   const content = await Content.find();
 
@@ -16,6 +18,8 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
   res.status(200).send(contentToSend);
 };
 
+//@route POST /api/v1/content/getSeries
+//@access private
 export const getSeries = async (req: Request, res: Response): Promise<void> => {
   const series = await Content.find({ isSeries: true });
 
@@ -30,6 +34,8 @@ export const getSeries = async (req: Request, res: Response): Promise<void> => {
   res.status(200).send(seriesToSend);
 };
 
+//@route POST /api/v1/content/getMovies
+//@access private
 export const getMovies = async (req: Request, res: Response): Promise<void> => {
   const movies = await Content.find({ isSeries: false });
 
@@ -44,6 +50,8 @@ export const getMovies = async (req: Request, res: Response): Promise<void> => {
   res.status(200).send(moviesToSend);
 };
 
+//@route POST /api/v1/content/getById/:id
+//@access private
 export const getById = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
   const content = await Content.findById(id);
@@ -56,11 +64,12 @@ export const getById = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+//@route POST /api/v1/content/getRandom
+//@access private
 export const getRandomContent = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  
   const content = await Content.find();
 
   if (content.length === 0) {
@@ -75,6 +84,8 @@ export const getRandomContent = async (
   res.status(200).send(randomContent);
 };
 
+//@route POST /api/v1/content/search
+//@access private
 export const getContentBySearch = async (
   req: Request,
   res: Response

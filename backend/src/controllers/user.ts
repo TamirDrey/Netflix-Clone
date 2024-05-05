@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils";
 import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
-import { IUser } from "../types/user-type";
 import Content from "../models/content/content";
 import { Extensions } from "../Extensions";
 
