@@ -22,7 +22,7 @@ const SignUp = () => {
       email: emailValue,
       password: passwordValue,
     }).then(() => {
-      navigate("/signin");
+      navigate("/");
     });
   };
 

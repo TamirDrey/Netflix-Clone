@@ -5,7 +5,10 @@ import { Request, Response } from "express";
 import { RequestWithUser } from "../types/requests-type";
 import { IUser } from "../types/user-type";
 import Content from "../models/content/content";
+import { Extensions } from "../Extensions";
 
+//@route POST /api/v1/users/signup
+//@access public
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, profilePicture } = req.body;
 
@@ -13,7 +16,6 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
   if (existingUser) {
     res.status(400).json({ message: "User already exists" });
-    return;
   }
 
   const newUser = new User({
@@ -23,27 +25,21 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
     password: bcrypt.hashSync(password),
   });
 
-  const user = await newUser.save();
+  await newUser.save();
 
   res.status(201).send({ message: "successfully registered" });
 };
 
+//@route POST /api/v1/users/signin
+//@access public
 export const signin = async (req: Request, res: Response): Promise<void> => {
   const { password, email } = req.body;
 
-  const user = await User.findOne({ email }).populate("likedContents")
-  .exec();;
+  const user = await User.findOne({ email }).populate("likedContents").exec();
 
   if (user && bcrypt.compareSync(password, user.password)) {
-    const userToSend: IUser = {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      likedContent: user.likedContents,
-    };
-
     res.send({
-      user: userToSend,
+      user: Extensions.AsIUser(user),
       token: generateToken(user),
     });
   } else {
@@ -51,8 +47,7 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-//@desc get current user
-//@route GET /api/users/auth-me
+//@route GET /api/v1/users/auth-me
 //@access private
 export const getUser = async (
   req: RequestWithUser,
@@ -66,16 +61,12 @@ export const getUser = async (
   }
   const user = await User.findOne({ email }).populate("likedContents").exec();
   if (user) {
-    const userToSend: IUser = {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      likedContent: user.likedContents,
-    };
-    res.status(200).send({ user: userToSend });
+    res.status(200).send({ user: Extensions.AsIUser(user) });
   }
 };
 
+//@route POST /api/v1/users/likeContent
+//@access private
 export const likeContent = async (
   req: RequestWithUser,
   res: Response
@@ -112,16 +103,11 @@ export const likeContent = async (
 
   await userDB.save();
 
-  const userToSend: IUser = {
-    _id: userDB._id,
-    name: userDB.name,
-    email: userDB.email,
-    likedContent: userDB.likedContents,
-  };
-
-  res.status(200).json({ id: contentId, user: userToSend });
+  res.status(200).send({ id: contentId, user: Extensions.AsIUser(userDB) });
 };
 
+//@route GET /api/v1/users/getUsersLikedContents
+//@access private
 export const getUsersLikedContents = async (
   req: RequestWithUser,
   res: Response
@@ -136,5 +122,5 @@ export const getUsersLikedContents = async (
     res.status(404).json({ message: "User not found" });
     return;
   }
-  res.status(200).json(userDB.likedContents);
+  res.status(200).send(userDB.likedContents);
 };
