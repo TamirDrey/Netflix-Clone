@@ -19,3 +19,8 @@ export interface ModalState {
   isOpen: boolean;
   contentId?: string;
 }
+
+export interface SearchBoxState {
+  isOpen: boolean;
+  query?: string;
+}

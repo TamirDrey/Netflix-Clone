@@ -1,24 +1,29 @@
-import { useEffect, useState } from "react";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useAppSelector } from "@/store/hooks";
+import {
+  selectQuery,
+  setQuery,
+} from "@/store/reducers/searchReducer";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SearchBox = () => {
-  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useLocation();
+  const query = useAppSelector(selectQuery);
 
-  useEffect(() => {
-    if (!query) {
-      return;
-    }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuery = e.target.value;
+    dispatch(setQuery(newQuery));
     const searchParams = new URLSearchParams(search);
-    searchParams.set("q", query);
+    searchParams.set("q", newQuery || "");
     navigate(`/search?${searchParams.toString()}`);
-  }, [query, search, navigate]);
+  };
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchParams = new URLSearchParams(search);
-    searchParams.set("q", query);
+    searchParams.set("q", query || "");
     navigate(`/search?${searchParams.toString()}`);
   };
 
@@ -29,8 +34,8 @@ const SearchBox = () => {
         type="search"
         placeholder="Search for products"
         aria-label="Search"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={query || ""}
+        onChange={handleInputChange}
       />
       <button className="btn btn-outline-primary" type="submit">
         <i className="fa fa-search"></i>

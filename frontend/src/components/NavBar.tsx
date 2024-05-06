@@ -9,14 +9,18 @@ import NavBarItem from "./NavBarItem";
 import AccountMenu from "./AccountMenu";
 import { useTranslation } from "react-i18next";
 import SearchBox from "./SearchBox";
+import { useDispatch } from "react-redux";
+import { selectIsSearchBoxOpen, toggleSearchBox } from "@/store/reducers/searchReducer";
+import { useAppSelector } from "@/store/hooks";
 
 const TOP_OFFSET = 66;
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
-  const [showSearchBox, setShowSearchBox] = useState(false);
+  const isSearchBoxOpen = useAppSelector(selectIsSearchBoxOpen);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -43,9 +47,6 @@ const NavBar = () => {
     setShowMobileMenu((current) => !current);
   }, []);
 
-  const toggleSearchBox = () => {
-    setShowSearchBox((current) => !current);
-  };
 
   return (
     <nav className="w-full fixed z-40">
@@ -75,12 +76,12 @@ const NavBar = () => {
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
           <div
-            onClick={toggleSearchBox}
+            onClick={() => dispatch(toggleSearchBox())}
             className="text-gray-200 hover:text-gray-300 cursor-pointer transition"
           >
             <MagnifyingGlassIcon className="w-6" />
           </div>
-          {showSearchBox && <SearchBox />}6
+          {isSearchBoxOpen && <SearchBox />}
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BellIcon className="w-6" />
           </div>

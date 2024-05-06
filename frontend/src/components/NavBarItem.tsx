@@ -1,3 +1,5 @@
+import { closeSearchBox, setQuery } from "@/store/reducers/searchReducer";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 interface NavbarItemProps {
@@ -7,8 +9,12 @@ interface NavbarItemProps {
 }
 
 const NavBarItem: React.FC<NavbarItemProps> = ({ label, active, route }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const moveToRoute = () => {
+    dispatch(closeSearchBox())
+    dispatch(setQuery(""))
     if (route) {
       navigate(route);
     }

@@ -4,21 +4,16 @@ import { useGetSearchQuery } from "../store/services/content-api";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import ContentCard from "../components/ContentCard";
-import { useEffect, useState } from "react";
 import { useAppSelector } from "@/store/hooks";
 import { selectIsOpenModal } from "@/store/reducers/modalReducer";
+
 
 const Search = () => {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
   const query = queryParams.get("q") || "";
-  const [searchQuery, setSearchQuery] = useState(query);
-  const { data, error, isLoading } = useGetSearchQuery(searchQuery);
   const isOpen = useAppSelector(selectIsOpenModal);
-
-  useEffect(() => {
-    setSearchQuery(query);
-  }, [query]);
+  const { data, error, isLoading } = useGetSearchQuery(query);
 
   return (
     <Layout showBillBoard={false} showInfoModal={isOpen}>
@@ -29,9 +24,9 @@ const Search = () => {
         {isLoading ? (
           <Loading />
         ) : error ? (
-          <Error message ={error} />
+          <Error message={error} />
         ) : (
-          data &&  (
+          data && (
             <div className="grid grid-cols-5 gap-4">
               {data.map((item) => (
                 <div key={item._id}>
