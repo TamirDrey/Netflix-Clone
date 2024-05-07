@@ -16,7 +16,7 @@ const LanguagePicker = () => {
     <div className="px-4 md:px-12 mt-4">
       <SelectBox
         options={[
-          { value: "en", label: "all" },
+          { value: "", label: "all" },
           { value: "en", label:"english" },
           { value: "es", label: "spanish" },
           { value: "de", label: "german" },

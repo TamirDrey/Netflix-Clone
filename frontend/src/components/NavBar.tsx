@@ -10,8 +10,12 @@ import AccountMenu from "./AccountMenu";
 import { useTranslation } from "react-i18next";
 import SearchBox from "./SearchBox";
 import { useDispatch } from "react-redux";
-import { selectIsSearchBoxOpen, toggleSearchBox } from "@/store/reducers/searchReducer";
+import {
+  selectIsSearchBoxOpen,
+  toggleSearchBox,
+} from "@/store/reducers/searchReducer";
 import { useAppSelector } from "@/store/hooks";
+import LanguagePicker from "./LanguagePicker";
 
 const TOP_OFFSET = 66;
 
@@ -46,7 +50,6 @@ const NavBar = () => {
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((current) => !current);
   }, []);
-
 
   return (
     <nav className="w-full fixed z-40">
@@ -83,7 +86,7 @@ const NavBar = () => {
           </div>
           {isSearchBoxOpen && <SearchBox />}
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <BellIcon className="w-6" />
+            <LanguagePicker />
           </div>
           <div
             onClick={toggleAccountMenu}
