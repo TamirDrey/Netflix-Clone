@@ -182,7 +182,7 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full  pl-1 sm:basis-1/4 md:basis-1/4 lg:basis-1/4",
+        "min-w-0 shrink-0 grow-0 pl-1 sm:w-1/4 md:w-1/4 lg:w-1/4",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
@@ -196,6 +196,7 @@ const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
   return (
@@ -206,8 +207,8 @@ const CarouselPrevious = React.forwardRef<
       className={cn(
         "absolute  h-8 w-8 rounded-full",
         orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? "-left-4 md:left--2 top-1/2 -translate-y-1/2"
+          : "-top-12 md:-top--2 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollPrev}
@@ -235,8 +236,8 @@ const CarouselNext = React.forwardRef<
       className={cn(
         "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? "-right-4 md:-right-12 top-1/2 -translate-y-1/2"
+          : "-bottom-4 md:-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollNext}

@@ -39,22 +39,25 @@ const ContentCard: React.FC<IContent> = (data) => {
       {isHovered && (
         <div
           className="
-        opacity-0
-        absolute
-        top-0
-        transition
-        duration-200
-        z-10
-        invisible
-        sm:visible
-        delay-300
-        w-full
-        scale-0
-        group-hover:scale-110
-        group-hover:-translate-y-[5vw]
-        group-hover:translate-x-[2vw]
-        group-hover:opacity-100
-      "
+          opacity-0
+          absolute
+          top-0
+          transition
+          duration-200
+          z-10
+          invisible
+          sm:visible
+          delay-300
+          w-full
+          h-[12vw]
+          sm:h-auto
+          scale-100
+          lg:scale-110
+          group-hover:scale-110
+          group-hover:-translate-y-[5vw]
+          group-hover:translate-x-[2vw]
+          group-hover:opacity-100
+        "
         >
           <iframe
             width="100%"
@@ -65,15 +68,15 @@ const ContentCard: React.FC<IContent> = (data) => {
           ></iframe>
           <div
             className="
-          z-10
-          bg-zinc-800
-          p-2
-          lg:p-4
-          absolute
-          w-full
-          transition
-          shadow-md
-          rounded-b-md
+            z-10
+            bg-zinc-800
+            p-2
+            lg:p-4
+            absolute
+            w-full
+            transition
+            shadow-md
+            rounded-b-md
           "
           >
             <div className="flex flex-row items-center gap-3">
