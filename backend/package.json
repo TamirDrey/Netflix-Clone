@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --output public"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
