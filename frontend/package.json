@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^20.11.26",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
     "@heroicons/react": "^2.1.1",
     "@radix-ui/react-slot": "^1.0.2",
     "@reduxjs/toolkit": "^2.2.1",
