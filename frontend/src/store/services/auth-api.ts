@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../reducers/authReducer";
 
-const BASE_URL = "http://localhost:8080/api/v1/users";
+const BASE_URL = "https://netflix-clone-server-gamma.vercel.app/api/v1/users";
 
 export const authApi = createApi({
   reducerPath: "authApi",

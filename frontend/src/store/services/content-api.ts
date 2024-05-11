@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IContent } from "../../types/content-types";
 
-const BASE_URL = "http://localhost:8080/api/v1/content";
+const BASE_URL = "https://netflix-clone-server-gamma.vercel.app/api/v1/content";
 
 export const groupByGenre = (contentList: IContent[]) => {
   const grouped: { [key: string]: IContent[] } = {};
