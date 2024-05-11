@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Input from "./Input";
+import Input from "./Input.tsx";
 import { useSigninMutation } from "../store/services/auth-api";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +24,6 @@ const SignIn = () => {
     navigate("/home");
   };
   const validateEmail = (email: string): boolean => {
-    // Regular expression for email validation
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
