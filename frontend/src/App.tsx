@@ -6,7 +6,7 @@ import Error from "./components/Error";
 
 function App() {
   const token = localStorage.getItem("accessToken");
-  const { data, error, isLoading } = useAuthMeQuery(null, {
+  const {  error, isLoading } = useAuthMeQuery(null, {
     skip: token ? false : true,
   });
 

@@ -14,7 +14,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible }) => {
   const dispatch = useAppDispatch();
   const [isVisible, setIsVisible] = useState<boolean>(!!visible);
   const contentId = useAppSelector((state) => state.modal.contentId);
-  const { data, error, isLoading } = useGetByIdQuery(contentId!);
+  const { data } = useGetByIdQuery(contentId!);
 
   useEffect(() => {
     setIsVisible(!!visible);

@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { PublicRoutes, UserRoutes } from "./RouteData";
 import { selectIsAuthenticated } from "../store/reducers/authReducer";
 import { useAppSelector } from "../store/hooks";
-import SignIn from "../components/SignIn";
 import Home from "../Pages/Home";
 import Auth from "../Pages/Auth";
 
