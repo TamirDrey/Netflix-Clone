@@ -18,19 +18,16 @@ export const authSlice = createSlice({
     },
     setUser: (state, action: PayloadAction<IUser>) => {
       state.user = action.payload;
-      //handle case of first login
       state.isAuthenticated = true;
       return state;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { logout, setUser } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectIsAuthenticated = (state: RootState) =>
   state.auth.isAuthenticated;
 
-export const selectUser = (state: RootState) =>
-  state.auth.user
+export const selectUser = (state: RootState) => state.auth.user;

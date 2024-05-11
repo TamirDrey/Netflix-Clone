@@ -23,7 +23,7 @@ export const authApi = createApi({
         method: "POST",
         body: payload,
       }),
-      async onQueryStarted({ dispatch, queryFulfilled }) {
+      async onQueryStarted(_,{ dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           if (data.token) {
@@ -48,7 +48,7 @@ export const authApi = createApi({
       query: () => ({
         url: "/auth-me",
       }),
-      async onQueryStarted({ dispatch, queryFulfilled }) {
+      async onQueryStarted(_,{ dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           dispatch(setUser(data.user));
@@ -65,7 +65,7 @@ export const authApi = createApi({
         method: "POST",
         body: payload,
       }),
-      async onQueryStarted({ dispatch, queryFulfilled }) {
+      async onQueryStarted(_,{ dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           dispatch(setUser(data.user));
