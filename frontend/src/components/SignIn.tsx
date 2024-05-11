@@ -50,14 +50,14 @@ const SignIn = () => {
             <Input
               type="email"
               label={t("form.email")}
-              onChange={(value) => setEmailValue(value)}
+              onChange={(value:string) => setEmailValue(value)}
               validate={validateEmail}
               required={true}
             />
             <Input
               label={t("form.password")}
               type="password"
-              onChange={(value) => setPasswordValue(value)}
+              onChange={(value:string) => setPasswordValue(value)}
               validate={validatePassword}
               required={true}
             />

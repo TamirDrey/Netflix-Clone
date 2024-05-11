@@ -56,21 +56,21 @@ const SignUp = () => {
           <Input
             type="text"
             label={t("form.name")}
-            onChange={(value) => setNameValue(value)}
+            onChange={(value: string) => setNameValue(value)}
             validate={checkName}
             required={true}
           />
           <Input
             type="email"
             label={t("form.email")}
-            onChange={(value) => setEmailValue(value)}
+            onChange={(value: string) => setEmailValue(value)}
             validate={checkEmail}
             required={true}
           />
           <Input
             label={t("form.password")}
             type="password"
-            onChange={(value) => setPasswordValue(value)}
+            onChange={(value: string) => setPasswordValue(value)}
             validate={checkPassword}
             required={true}
           />
