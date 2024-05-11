@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: 'https://netflix-clone-six-ruby.vercel.app' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -35,7 +35,7 @@ mongoose
   .connect(mongoConnectionString)
   .then(() => {
     console.log("✅ ->> MongoDB connected successfully");
-    app.listen(PORT, () => {
+    app.listen(() => {
       console.log(`✅ ->> Server is running on port ${PORT}`);
     });
   })
