@@ -21,8 +21,8 @@ export const authApi = createApi({
       query: (payload) => ({
         url: "/signin",
         method: "POST",
-        mode: 'cors',
         body: payload,
+        mode: 'no-cors',
       }),
       async onQueryStarted(_,{ dispatch, queryFulfilled }) {
         try {
