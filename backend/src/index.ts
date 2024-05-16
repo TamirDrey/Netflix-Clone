@@ -28,7 +28,7 @@ if (!mongoConnectionString) {
   console.error(
     "❌ MongoDB connection string not found in environment variables"
   );
-  process.exit(1); // Exit the process if MongoDB connection string is not defined
+  process.exit(1); 
 }
 
 mongoose
