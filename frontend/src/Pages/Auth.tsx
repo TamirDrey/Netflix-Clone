@@ -20,20 +20,36 @@ const Auth = () => {
         <nav className="px-12 py-5">
           <img src="/images/logo.png" className="h-12" alt="Logo" />
         </nav>
-        <LanguagePicker/>
+        <LanguagePicker />
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
             <h2 className="text-white text-4xl mb-8 font-semibold">
-              {variant === "login" ? (t("signInPage.title")): (t("signUpPage.title"))}
+              {variant === "login"
+                ? t("signInPage.title")
+                : t("signUpPage.title")}
             </h2>
+            <p className="text-white mb-3 font-semibold">
+              For the example enter:
+            </p>
+            <p className="text-white font-semibold">
+              email: admin@example.com
+            </p>
+            <p className="text-white mb-3 font-semibold">
+              password: omEr@1234
+            </p>
             <div>
               {variant === "login" ? <SignIn /> : <SignUp />}
               <p className="text-neutral-500 mt-12">
                 {variant === "login"
-                  ? (t("signInPage.firstLogin"))
-                  : (t("signUpPage.haveAccount"))}
-                <span onClick={toggleVariant} className="text-white ml-1 hover:underline cursor-pointer">
-                  {variant === "login" ? (t("signUpPage.create")) : (t("signInPage.login"))}
+                  ? t("signInPage.firstLogin")
+                  : t("signUpPage.haveAccount")}
+                <span
+                  onClick={toggleVariant}
+                  className="text-white ml-1 hover:underline cursor-pointer"
+                >
+                  {variant === "login"
+                    ? t("signUpPage.create")
+                    : t("signInPage.login")}
                 </span>
               </p>
             </div>
@@ -44,4 +60,3 @@ const Auth = () => {
   );
 };
 export default Auth;
-
