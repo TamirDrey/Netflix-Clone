@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../reducers/authReducer";
 
-const BASE_URL = "https://netflix-clone-project-backend.vercel.app/api/v1/users";
+// const BASE_URL = `${import.meta.env.BASE_URL}/api/v1/users`;
+const BASE_URL = "http://localhost:8080/api/v1/users";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -22,7 +23,6 @@ export const authApi = createApi({
         url: "/signin",
         method: "POST",
         body: payload,
-        mode: 'no-cors',
       }),
       async onQueryStarted(_,{ dispatch, queryFulfilled }) {
         try {

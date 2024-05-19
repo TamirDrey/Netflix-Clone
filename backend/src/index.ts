@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use("/api/v1/seed", seedRouter);
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/content", contentRouter);
+app.use("/api/v1/contents", contentRouter);
 
 const PORT = process.env.PORT || 8080;
 
@@ -35,7 +35,7 @@ mongoose
   .connect(mongoConnectionString)
   .then(() => {
     console.log("✅ ->> MongoDB connected successfully");
-    app.listen(() => {
+    app.listen(PORT,() => {
       console.log(`✅ ->> Server is running on port ${PORT}`);
     });
   })
